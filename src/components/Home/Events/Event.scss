@@ -1,0 +1,33 @@
+.events{
+    height: 100vh;
+    .heading{
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 500;
+        padding-top: 6vh;
+        color: #2d5896;
+    }
+    .event-list{
+        margin-top: 10vh;
+        display: grid;
+        justify-content: center;
+        grid-gap: 1em;
+        grid-template-columns: repeat(auto-fill,300px);
+        .event-tile{
+            // border: 2px solid black;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 24px;
+            padding: 10px;
+            height: 50px;
+            background-image: linear-gradient(to right,#7f7fd5,#86a8e7, #91eae4);
+            transition-duration: 300ms;
+            cursor: pointer;
+            color: white;
+            &:hover{
+                transform: scale(1.1,1.1);
+            }
+        }
+    }
+}

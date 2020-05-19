@@ -1,0 +1,36 @@
+.header{
+    display: flex;
+    position: sticky;
+    top:0;
+    background-color: white;
+    border-bottom:2px solid #2d5896;
+    z-index: 3;
+    color: #343079;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    .header-left{
+        display: flex;
+    }
+    .header-right{
+        display: none;
+        .btn{
+            text-transform: uppercase;
+            cursor: pointer;
+            transition-duration: 200ms;
+            &:hover{
+                background-color: #2d5896;
+                color: white;
+            }
+        }
+    }
+    .header-item{
+        font-weight: 500;
+        padding: 10px;
+        cursor: pointer;
+        transition-duration: 220ms;
+        &:hover{
+            color: yellow;
+        }
+    }
+
+}

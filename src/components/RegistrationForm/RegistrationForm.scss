@@ -1,0 +1,78 @@
+.register{
+    .heading{
+        font-size: 2rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .form{
+        width: fit-content;
+        margin: auto;
+        table{
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 4vh;
+            background-color: lightgray;
+            margin-bottom: 10vh;
+            tr{
+                td{padding: 10px;}
+                .label{
+                    text-transform: uppercase;
+                    text-align: center;
+                    font-weight: 500;
+                }
+                input[type=text], select {
+                    width: 100%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    border: 2px solid transparent;
+                    &:focus{
+                        border: 2px solid #2d5896;
+                    }
+                  }
+                  .file{
+                    width: 0.1px;
+                    height: 0.1px;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                  }
+                  .file + label {
+                    font-size: 1.25em;
+                    // font-weight: 700;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    color: white;
+                    background-color: #2d5896;
+                    display: inline-block;
+                }
+                
+                .file:focus + label,
+                .file + label:hover {
+                    background-color: #3f5acc;
+                }
+                  select{
+                      text-align: center;
+                      text-transform: uppercase;
+                      font-weight: 500;
+                  }
+                  button{
+                      text-transform: uppercase;
+                      background-color: #2d5896;
+                      color: white;
+                      border: none;
+                      padding: 5px 10px;
+                      font-size: 24px;
+                      border-radius: 10px;
+                  }
+                  
+                  
+            }
+        }
+    }
+}
