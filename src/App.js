@@ -3,7 +3,7 @@ import './App.scss';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import Register from './components/Register/Register';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Header/>
       <Switch>
       <Route exact path="/" component={Home}/>
-      <Route exact path="/register" component={RegistrationForm}/>
+      <Route exact path="/register" component={Register}/>
       </Switch>
       </Router>
     </div>
