@@ -9,10 +9,7 @@ const Header = () => {
                 <div className="header-item">About</div>
                 <div className="header-item">Contact</div>
             </div>
-            <div className="header-right">
-                <div className="header-item btn">Login</div>
-                <div className="header-item btn">Sign up</div>
-            </div>
+            
         </div>
     );
 };

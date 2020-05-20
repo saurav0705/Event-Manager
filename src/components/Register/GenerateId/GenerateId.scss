@@ -1,0 +1,59 @@
+.generate{
+    .card{
+        // width: 300px;
+        width: fit-content;
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        border: 2px solid black;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding-bottom: 2vh;
+        
+        .event{
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 5vh;
+            background-color: #177ef5;
+        }
+        .name{
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 5vh;
+            font-size: 20px;
+            padding: 1vh;
+            
+        }
+        .image{
+            padding: 10px 20px;
+            height:200px;
+            width:200px;
+            margin: auto;
+            img{
+                height:100%;
+                width:100%;
+               border-radius: 50% ;
+            }
+        }
+    }
+    .download{
+        display: block;
+        margin: auto;
+        margin-top: 4vh;
+        margin-bottom: 4vh;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        font-weight: 500;
+        background-color: tomato;
+        transition-duration: 200ms;
+        border-radius: 2px;
+        color: white;
+        cursor: pointer;
+        border: none;
+        &:hover{
+            background-color: #b13b2d;
+        }
+    }
+}

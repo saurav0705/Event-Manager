@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RegistrationForm.scss';
 import {FiUpload} from 'react-icons/fi';
 const RegistrationForm = (props) => {
     const [data,setData] = useState({name:"",email:"",mobile:"",type:"self",tickets:"",id:""});
     const [error,setError] = useState({name:"",email:"",mobile:"",type:"",tickets:"",id:""});
     const [active,setActive] = useState(false);
+    useEffect(()=>{
+        setData({...data,...props.data});
+        checkActive();
+    },[])
     const selectFile = () => {
         document.querySelector('.file').click();
     }
@@ -23,7 +27,6 @@ const RegistrationForm = (props) => {
             }
             // eslint-disable-next-line no-fallthrough
             case 'email':{
-                // console.log(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})$/gi.test(event.target.value));
                 if(event.target.value.length === 0){ obj["email"]="";setError({...obj});return;}    
                 if(! /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/gi.test(event.target.value)){
                         obj["email"] = "Not  a valid email"
@@ -64,10 +67,18 @@ const RegistrationForm = (props) => {
             }
             return;
         }
+
+        
         let obj = data;
         validate(event);
         obj[event.target.name] = event.target.value;
         setData({...obj});
+        if(event.target.name === "id"){
+            let obj = data;
+            validate(event);
+            obj[event.target.name] = event.target.files[0];
+            setData({...obj});
+        }
         checkActive();
     }
 
@@ -96,7 +107,7 @@ const RegistrationForm = (props) => {
     }
     return (
         <div className="register">
-        <div className="heading" onClick={() => console.log(data)}>Event name</div>   
+        <div className="heading">Event name</div>   
         <div className="form">
             <table>
                 <tr>

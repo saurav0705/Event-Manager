@@ -6,7 +6,7 @@
     .headline{
         flex:1;
         color: white;
-        margin: 2vh;
+        // margin: 2vh;
         font-size: 24px;
         text-align: center;
         .button{
@@ -60,5 +60,17 @@
             margin-left:3vh;
             transform: rotate(20deg);
         }
+    }
+}
+
+@media screen and (max-width:600px){
+    .banner{
+        display: block;
+    }
+    .headline{
+        padding-top: 30vh;
+    }
+    .card{
+        display: none;
     }
 }

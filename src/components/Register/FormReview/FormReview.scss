@@ -1,0 +1,73 @@
+.form-view{
+.view{
+    border: 2px solid black;
+    border-radius: 10px;
+    max-width: fit-content;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    .image{
+        height:200px;
+        width:200px;
+        overflow: hidden;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .info{
+        text-align: center;
+        position: relative;
+        font-size: 24px;
+        padding: 0 10px;
+        .name{
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .event{
+            background-color: #b13b2d;
+            color: white;
+            text-transform: uppercase;
+            font-size: 2rem;
+        }
+
+        .email{
+            font-size: 10px;
+            color: #429fbb;
+        }
+        .mobile{
+            color: #b13b2d;
+        }
+        .type{
+            text-transform: uppercase;
+        }
+        .tickets{
+            color: #ef9655;
+        }
+    }
+
+
+}
+.buttons{
+    margin: auto;
+    margin-top: 5vh;
+    width: max-content;
+    
+    button{
+        width: 150px;
+        padding: 10px;
+        text-transform: uppercase ;
+        background-color: #3a62e5;
+        color: white;
+        margin: 10px;
+        border-radius: 5px;
+        border:2px solid #3a62e5;
+        transition-duration: 200ms;
+        cursor: pointer;
+        &:hover{
+            background-color: #429fbb;
+        }
+    }
+}
+}
