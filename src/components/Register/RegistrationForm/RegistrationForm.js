@@ -8,7 +8,7 @@ const RegistrationForm = (props) => {
     useEffect(()=>{
         setData({...data,...props.data});
         checkActive();
-    },[])
+    },[props.data])
     const selectFile = () => {
         document.querySelector('.file').click();
     }
@@ -107,7 +107,7 @@ const RegistrationForm = (props) => {
     }
     return (
         <div className="register">
-        <div className="heading">Event name</div>   
+        <div className="heading">{data.event}</div>   
         <div className="form">
             <table>
                 <tr>

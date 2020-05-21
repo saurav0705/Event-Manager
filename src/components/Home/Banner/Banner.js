@@ -5,13 +5,13 @@ import {AiOutlineQrcode} from 'react-icons/ai';
 const Banner = () => {
     const bannerHeadLines = [
         'Managing Event Made Easier',
-        'Get Yourself an event ID'
+        'Get Yourself an event ID',
+        'Monitor Your Event'
     ]
     return (
-        <div className="banner">
+        <div className="banner" id="banner">
             <div className="headline">
             {bannerHeadLines.map((headline,index) => (<div className="text" key={"banner"+index}>{headline}</div>))}
-            <div><button className="button">GET ID</button></div>
             
             </div>
             <div className="image">

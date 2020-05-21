@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Register.scss';
 import RegistrationForm from './RegistrationForm/RegistrationForm';
 import FormReview from './FormReview/FormReview';
 import GenerateId from './GenerateId/GenerateId';
-const Register = () => {
-    const [data,setData] = useState({event:"event"});
+import queryString from 'query-string';
+const Register = ({location}) => {
+    const [data,setData] = useState({event:"e"});
     const [active,setActive] = useState(1);
+    useEffect(()=>{
+        window.scrollTo(0,0);
+        const { event} = queryString.parse(location.search);
+        let obj = data;
+        obj['event']=event;
+       setData({...obj})
+
+    },[])
     const getView = (val) => {
         switch(val){
             case 1: return <RegistrationForm data={data} submit={(obj)=> {setActive(2);setData({...data,...obj})} }/>

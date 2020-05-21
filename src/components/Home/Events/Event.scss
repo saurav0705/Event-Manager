@@ -1,6 +1,8 @@
 .events{
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 10vh;
     .heading{
+        margin-top: 7vh;
         text-transform: uppercase;
         text-align: center;
         font-size: 2.5rem;

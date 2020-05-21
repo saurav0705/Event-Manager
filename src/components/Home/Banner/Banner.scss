@@ -34,6 +34,7 @@
             width: 200px;
             border-radius: 10px;
             text-align: center;
+            padding: 10px;
             .title{
                 font-size: 42px;
                 text-transform: uppercase;
@@ -63,14 +64,22 @@
     }
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:800px){
     .banner{
         display: block;
+        .headline{
+            padding-top:20vh;
+        }
+        .image{
+            
+            padding: 10vh;
+            overflow-x: hidden;
+        }
     }
-    .headline{
-        padding-top: 30vh;
-    }
-    .card{
-        display: none;
-    }
+    // .headline{
+    //     padding-top: 30vh;
+    // }
+    // .card{
+    //     display: none;
+    // }
 }
