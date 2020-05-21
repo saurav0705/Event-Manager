@@ -3,6 +3,9 @@ import './Banner.scss';
 import {IoMdPerson} from 'react-icons/io';
 import {AiOutlineQrcode} from 'react-icons/ai';
 import {TimelineLite,Power2} from 'gsap';
+import CSSPlugin from 'gsap/CSSPlugin';
+
+const C = CSSPlugin;
 const Banner = () => {
     let references = useRef({headline:"",card1:"",card2:""});
     let timeline = new TimelineLite();
