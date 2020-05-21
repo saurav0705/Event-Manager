@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './RegistrationForm.scss';
 import {FiUpload} from 'react-icons/fi';
+import {TimelineLite,Power2} from 'gsap';
 const RegistrationForm = (props) => {
     const [data,setData] = useState({name:"",email:"",mobile:"",type:"self",tickets:"",id:""});
     const [error,setError] = useState({name:"",email:"",mobile:"",type:"",tickets:"",id:""});
     const [active,setActive] = useState(false);
+    let timeline = new TimelineLite();
     useEffect(()=>{
+        
         setData({...data,...props.data});
         checkActive();
+    //    animation();
     },[props.data])
+    useEffect(()=>{
+        animation();
+    },[])
+    const animation = () => {
+        timeline.from(document.querySelector('.register'),1,{opacity:0,ease:Power2.easeInOut})
+        // .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
+        
+    }
     const selectFile = () => {
         document.querySelector('.file').click();
     }
@@ -38,6 +50,7 @@ const RegistrationForm = (props) => {
         }
     }
     const handleChange = (event) => {
+        if(event.target.value === undefined){return;}
         checkActive();
         if(event.target.name === "id"){
             validateFileType(event.target.value);

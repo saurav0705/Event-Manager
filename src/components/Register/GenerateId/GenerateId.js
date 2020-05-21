@@ -2,21 +2,19 @@ import React,{useEffect} from 'react';
 import './GenerateId.scss';
 import QRCode from 'qrcode.react';
 import {useHistory} from 'react-router-dom';
-
+import {TimelineLite,Power2} from 'gsap';
 const GenerateId = (props) => {
+    let timeline = new TimelineLite();
     let history = useHistory();
-    // const data = {
-    //     event:"event",
-    //     "name": "saurav aggarwal",
-    //     "email": "aggarwalsaurav98@gmail.com",
-    //     "mobile": "1234567890",
-    //     "type": "self",
-    //     "tickets": "123456",
-    //     "id": "https://drive.google.com/uc?id=10QFET3vVxDFZdSUaL0IfXILS53tL3Nfc"
-    //   }
       useEffect(()=>{
         PreviewImage(props.data.id);
+        animation();
     },[])
+    const animation = () => {
+        timeline.from(document.querySelector('.generate'),1,{opacity:0,ease:Power2.easeInOut})
+        // .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
+        
+    }
       function PreviewImage(image) {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(image);

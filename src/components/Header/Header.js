@@ -24,15 +24,13 @@ const Header = () => {
     return (
         <div className="header">
             <div className="header-left">
-                <div className="header-item"><span class="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Event Handler</span></div>
+                <div className="header-item"><span className="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Event Handler</span></div>
                 <div className="header-item" onClick={() => goTo('events')}>Events</div>
                 <div className="header-item" onClick={() => goTo('about')}>About</div>
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
             </div>
             <div className="header-right">
-                <div className="">
-                    <div className="btn">login</div>
-                    </div>
+                <div className="btn">login</div>
             </div>
         </div>
     );

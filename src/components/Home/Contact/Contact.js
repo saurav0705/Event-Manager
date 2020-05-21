@@ -1,9 +1,31 @@
-import React from 'react';
+import React,{useEffect,useRef} from 'react';
 import './Contact.scss';
 import{IoIosSend} from 'react-icons/io';
 import {FaGithubSquare,FaPhone,FaFacebookSquare,FaLinkedin,FaSnapchatSquare,FaInstagram,FaTwitterSquare} from 'react-icons/fa';
 import {MdEmail} from 'react-icons/md';
+import {TimelineLite,Power2} from 'gsap';
 const Contact = () => {
+    let timeline = new TimelineLite();
+    useEffect(()=>{
+         let observer = new IntersectionObserver(async (obj)=>{
+            if(obj[0].intersectionRatio > 0){
+
+                await animation();
+                observer.unobserve(document.querySelector('.contact'));
+            }
+               
+                
+        });
+        observer.observe(document.querySelector('.contact'));
+        
+    },[])
+
+    const animation = () => {
+        timeline.to(document.querySelector('.contact'),0.2,{opacity:1,ease:Power2.easeInOut})
+                .from(document.querySelector('.form'),1,{scale:0,opacity:0,ease:Power2.easeInOut})
+                .from(document.querySelector('.social'),1,{scale:0,opacity:0,ease:Power2.easeInOut})
+        
+    }
     const icon = (key) => {
         switch(key.toUpperCase()){
             case 'EMAIL' : return <MdEmail/>
@@ -62,7 +84,7 @@ const Contact = () => {
                     <div className="heading">Social</div>
                     <div className="tile-container">
                 {Object.keys(social).map((social,index) => {
-                    return(<div  className="tile" onClick={()=>window.open(social === 'email' ? "mailto:"+social[social]:social[social])}>{icon(social)}</div>)
+                    return(<div  className="tile" key={social} onClick={()=>window.open(social === 'email' ? "mailto:"+social[social]:social[social])}>{icon(social)}</div>)
                 })}
                 </div>
                 </div>

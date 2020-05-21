@@ -62,6 +62,9 @@
             .sidebar{
                 display: inline-block;
             }
+            &:hover{
+                box-shadow: none;
+            }
         }
     }
 }

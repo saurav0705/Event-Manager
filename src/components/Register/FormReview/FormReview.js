@@ -2,10 +2,18 @@ import React, { useEffect } from 'react';
 import './FormReview.scss';
 import {MdCall} from 'react-icons/md';
 import {FaTicketAlt} from 'react-icons/fa';
+import {TimelineLite,Power2} from 'gsap';
 const FormReview = (props) => {
+    let timeline = new TimelineLite();
     useEffect(()=>{
         PreviewImage(props.data.id);
+        animation();
     },[])
+    const animation = () => {
+        timeline.from(document.querySelector('.form-view'),1,{opacity:0,ease:Power2.easeInOut})
+        // .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
+        
+    }
     function PreviewImage(image) {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(image);
