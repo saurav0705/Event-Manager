@@ -38,6 +38,10 @@
                 }
              }  
                }
+            .disabled{
+                pointer-events: none;
+                opacity: 0.7;
+            }
             .table-container{
                 padding: 10px;
                    .label{
@@ -52,11 +56,15 @@
                            border: 1px solid #2d5896;
                            width: 90%;
                            padding: 10px;
-                           margin-bottom: 5vh;
+                           
                            font-size: 24px;
                            &:focus{
                             border: 1px solid blue;
                            }
+                       }
+                       .error{
+                        margin-bottom: 5vh;
+                        color: red;
                        }
                        
                    }

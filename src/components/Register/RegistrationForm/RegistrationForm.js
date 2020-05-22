@@ -2,58 +2,35 @@ import React, { useState, useEffect } from 'react';
 import './RegistrationForm.scss';
 import {FiUpload} from 'react-icons/fi';
 import {TimelineLite,Power2} from 'gsap';
+import {validate,validateFileType} from '../../../utilities/validation';
+
 const RegistrationForm = (props) => {
     const [data,setData] = useState({name:"",email:"",mobile:"",type:"self",tickets:"",id:""});
-    const [error,setError] = useState({name:"",email:"",mobile:"",type:"",tickets:"",id:""});
+    const [error,setError] = useState({name:"",email:"",mobile:"",type:"",tickets:""});
     const [active,setActive] = useState(false);
     let timeline = new TimelineLite();
     useEffect(()=>{
         
         setData({...data,...props.data});
         checkActive();
-    //    animation();
     },[props.data])
     useEffect(()=>{
         animation();
     },[])
     const animation = () => {
         timeline.from(document.querySelector('.register'),1,{opacity:0,ease:Power2.easeInOut})
-        // .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
-        
     }
     const selectFile = () => {
         document.querySelector('.file').click();
     }
-    const validate = (event) => {
-        let obj = error;
-        // eslint-disable-next-line default-case
-        switch(event.target.name){
-            case 'name':{
-                console.log(/[0-9-/:-@[-`{-~]/gi.test(event.target.value));
-                if(/[0-9-/:-@[-`{-~]/gi.test(event.target.value)){
-                    obj["name"] = "No special character or number is allowed"
-                }else{
-                    obj["name"]=""
-                }   
-                setError({...obj}) 
-            }
-            // eslint-disable-next-line no-fallthrough
-            case 'email':{
-                if(event.target.value.length === 0){ obj["email"]="";setError({...obj});return;}    
-                if(! /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/gi.test(event.target.value)){
-                        obj["email"] = "Not  a valid email"
-                    }else{
-                        obj["email"]=""
-                    }   
-
-            }
-        }
-    }
-    const handleChange = (event) => {
+    const handleChange = async (event) => {
         if(event.target.value === undefined){return;}
         checkActive();
         if(event.target.name === "id"){
-            validateFileType(event.target.value);
+            let obj = error;
+            obj["id"] = validateFileType(event.target.value)["id"];
+            setError({...obj});
+            
         }
         if(event.target.name === "mobile" || event.target.name === "tickets"){
             if(event.target.value.length === 0 ){
@@ -83,12 +60,12 @@ const RegistrationForm = (props) => {
 
         
         let obj = data;
-        validate(event);
+        setError({...error,...validate(event)});
         obj[event.target.name] = event.target.value;
         setData({...obj});
         if(event.target.name === "id"){
             let obj = data;
-            validate(event);
+            setError({...error,...validate(event)});
             obj[event.target.name] = event.target.files[0];
             setData({...obj});
         }
@@ -104,19 +81,6 @@ const RegistrationForm = (props) => {
 
 
         setActive(true);
-    }
-    function validateFileType(fileName){
-        var idxDot = fileName.lastIndexOf(".") + 1;
-        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-        if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
-            let obj = error;
-            obj['id'] ="";
-            setError({...obj})
-        }else{
-            let obj = error;
-            obj['id'] ="only JPG/PNG are allowed";
-            setError({...obj})
-        }   
     }
     return (
         <div className="register">
