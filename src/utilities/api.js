@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_ADMIN_URL = "http://hackstack.herokuapp.com/";
+const BASE_ADMIN_URL = "https://hackstack.herokuapp.com/";
 
 const checkResponse = (response) => {
     console.log(response.status);

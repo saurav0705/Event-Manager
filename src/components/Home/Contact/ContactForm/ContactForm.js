@@ -46,7 +46,7 @@ const ContactForm = () => {
                             <div className="input"><textarea placeholder="Enter Message..." name="message"  onChange={(event)=>changeHandler(event)}></textarea></div>
                             
                     </div>
-                    <div className={active ? "button":"button disabled"}>
+                    <div className={active ? "button":"button disabled"} onClick={()=>{ console.log(data);}}>
                     <button>Submit <IoIosSend/></button>
                     </div>
 
