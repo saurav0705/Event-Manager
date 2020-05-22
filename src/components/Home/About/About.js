@@ -9,7 +9,7 @@ const About = () => {
     let tileRef = useRef({tile:[]});
     useEffect(()=>{
          let observer = new IntersectionObserver(async (obj)=>{
-            if(obj[0].intersectionRatio > 0){
+            if(obj[0].intersectionRatio > 0.001){
 
                 await animation();
                 observer.unobserve(document.querySelector('.about'));

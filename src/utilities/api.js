@@ -2,7 +2,6 @@ import axios from 'axios';
 const BASE_ADMIN_URL = "https://hackstack.herokuapp.com/";
 
 const checkResponse = (response) => {
-    console.log(response.status);
     if(response.status === 200){
         return response.data;
     }else{

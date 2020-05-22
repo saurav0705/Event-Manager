@@ -19,7 +19,7 @@ const Events = () => {
             setActive(true);
         });},2000);
          let observer = new IntersectionObserver(async (obj)=>{
-            if(obj[0].intersectionRatio > 0){
+            if(obj[0].intersectionRatio > 0.002){
 
                 await animation();
                 observer.unobserve(document.querySelector('.event-list'));
