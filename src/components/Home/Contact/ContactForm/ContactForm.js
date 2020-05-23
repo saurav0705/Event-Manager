@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import{IoIosSend} from 'react-icons/io';
-import {validate} from '../../../../utilities/validation';
+import {validate,checkActive} from '../../../../utilities/validation';
 const ContactForm = () => {
     const [data,setData] = useState({name:"",email:"",message:""});
     const [error,setError] = useState({name:"",email:""});
@@ -11,19 +11,9 @@ const ContactForm = () => {
         setError({...error,...validate(event)});
         obj[event.target.name] = event.target.value;
         setData({...obj});
-        buttonActive()
+        setActive(checkActive(data,error))
     }
-    const buttonActive = () => {
-        let ls = Object.keys(data).filter(key => data[key].length === 0);
-        if(ls.length !== 0 ){setActive(false);return;}
-
-        ls = Object.keys(error).filter(key => error[key].length !== 0);
-        if(ls.length !== 0 ){setActive(false);return;}
-
-
-        setActive(true);
-
-    }
+    
     return (
         <div className="form">
                     <div className="heading">

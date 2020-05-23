@@ -29,7 +29,7 @@ const Header = () => {
                 <div className="header-item" onClick={() => goTo('about')}>About</div>
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
             </div>
-            <div className="header-right">
+            <div className="header-right" onClick={() => history.push('/admin')}>
                 <div className="btn">login</div>
             </div>
         </div>

@@ -3,7 +3,6 @@ export const validate = (event) => {
     // eslint-disable-next-line default-case
     switch(event.target.name){
         case 'name':{
-            console.log(/[0-9-/:-@[-`{-~]/gi.test(event.target.value));
             if(/[0-9-/:-@[-`{-~]/gi.test(event.target.value)){
                 obj["name"] = "No special character or number is allowed"
             }else{
@@ -36,4 +35,18 @@ export function validateFileType(fileName){
         obj['id'] ="only JPG/PNG are allowed";
         return obj;
     }   
+}
+
+
+export const checkActive = (data,error) => {
+    if(!data && !error){return false;}
+    let ls = Object.keys(data).filter(key => data[key].length === 0);
+    if(ls.length !== 0 ){return false;}
+   
+
+    ls = Object.keys(error).filter(key => error[key].length !== 0);
+    if(ls.length !== 0 ){return false;}
+    
+
+    return true;
 }

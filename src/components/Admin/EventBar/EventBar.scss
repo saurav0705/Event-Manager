@@ -1,0 +1,35 @@
+.event-bar-proxy{
+    flex: 1;
+}
+.event-bar{
+    flex: 1;
+    position: fixed;
+    z-index: 0;
+    max-width: inherit;
+    .event{
+        text-align: center;
+        border: 2px solid black;
+        padding: 5px 10px;
+        margin: 2vh;
+        font-size: 28px;
+        font-weight: 400;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .active{
+        background-color: skyblue;
+    }
+}
+
+@media  screen and (max-width:950px){
+    .event-bar-proxy{
+        height: 0;
+    }
+    .event-bar{
+        position: relative;
+        display: flex;
+        overflow-y: scroll;
+        .event{
+        min-width: fit-content;}
+    }
+}

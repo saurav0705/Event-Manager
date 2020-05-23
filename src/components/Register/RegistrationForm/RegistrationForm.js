@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './RegistrationForm.scss';
 import {FiUpload} from 'react-icons/fi';
 import {TimelineLite,Power2} from 'gsap';
-import {validate,validateFileType} from '../../../utilities/validation';
+import {validate,validateFileType,checkActive} from '../../../utilities/validation';
 
 const RegistrationForm = (props) => {
     const [data,setData] = useState({name:"",email:"",mobile:"",type:"self",tickets:"",id:""});
@@ -25,7 +25,7 @@ const RegistrationForm = (props) => {
     }
     const handleChange = async (event) => {
         if(event.target.value === undefined){return;}
-        checkActive();
+        // setActive(checkActive(data,error));
         if(event.target.name === "id"){
             let obj = error;
             obj["id"] = validateFileType(event.target.value)["id"];
@@ -36,7 +36,8 @@ const RegistrationForm = (props) => {
             if(event.target.value.length === 0 ){
                 let obj = data;
                 obj[event.target.name] = "";
-                setData({...obj})
+                setData({...obj});
+                setActive(()=>checkActive(data,error));
                 return;
             }
             if(! isNaN(parseInt(event.target.value))){
@@ -55,6 +56,7 @@ const RegistrationForm = (props) => {
                     }
                 }
             }
+            setActive(()=>checkActive(data,error));
             return;
         }
 
@@ -65,23 +67,12 @@ const RegistrationForm = (props) => {
         setData({...obj});
         if(event.target.name === "id"){
             let obj = data;
-            setError({...error,...validate(event)});
             obj[event.target.name] = event.target.files[0];
             setData({...obj});
         }
-        checkActive();
+        setActive(() => checkActive(data,error));
     }
 
-    const checkActive = () => {
-        let ls = Object.keys(data).filter(key => data[key].length === 0);
-        if(ls.length !== 0 ){setActive(false);return;}
-
-        ls = Object.keys(error).filter(key => error[key].length !== 0);
-        if(ls.length !== 0 ){setActive(false);return;}
-
-
-        setActive(true);
-    }
     return (
         <div className="register">
         <div className="heading">{data.event}</div>   

@@ -11,7 +11,7 @@ const FormReview = (props) => {
     },[])
     const animation = () => {
         timeline.from(document.querySelector('.form-view'),1,{opacity:0,ease:Power2.easeInOut})
-        // .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
+       
         
     }
     function PreviewImage(image) {

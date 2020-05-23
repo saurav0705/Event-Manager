@@ -1,0 +1,10 @@
+.admin{
+    display: flex;
+    padding-bottom: 10vh;
+}
+
+@media screen and (max-width:950px){
+    .admin{
+        display: block;
+    }
+}
