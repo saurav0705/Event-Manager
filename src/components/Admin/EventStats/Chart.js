@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Pie,Bar } from 'react-chartjs-2';
 
 const COLORS = [
     "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177" ,"#0d5ac1" ,
@@ -14,7 +14,9 @@ const COLORS = [
     "#5be4f0", "#57c4d8", "#a4d17a", "#225b8", "#be608b", "#96b00c", "#088baf",
     "#f158bf", "#e145ba", "#ee91e3", "#05d371", "#5426e0", "#4834d0", "#802234",
     "#6749e8", "#0971f0", "#8fb413", "#b2b4f0", "#c3c89d", "#c9a941", "#41d158"]
-const PieChart = (props) => {
+const Chart = (props) => {
+    const [events,setEvents] = useState({});
+    const [chart,setChart] = useState('Bar');
     const [data,setData] = useState( {
         self:0,
         corporate:0,
@@ -22,6 +24,7 @@ const PieChart = (props) => {
         group:0
 
     });
+
     
     // useEffect(()=>{console.log(data)},[data])
     useEffect(()=>{
@@ -29,10 +32,15 @@ const PieChart = (props) => {
             corporate:0,
             group:0,
             others:0};
+        if(!events[props.select]){
         props.data.forEach(element => {
             obj[element.type] = obj[element.type] + element['tickets']
         });
+        setEvents({...events,...{[props.select]:obj}})
         setData(obj);
+        }else{
+            setData(events[props.select]);
+        }
 
     },[props.data])
     function shuffle(array) {
@@ -48,16 +56,46 @@ const PieChart = (props) => {
         }],
         
     }
+    const showChart = (val) => {
+        switch(val){
+            case 'Pie': {return <Pie
+                        data={dataSet}
+                        width={150}
+                        height={70}
+                        options={{}}
+                    />}
+            case 'Bar' : {return <Bar
+                data={dataSet}
+                width={150}
+                height={70}
+                options={{}}
+            />
+
+            }
+            default: return null;
+        }
+
+    }
+    const generateDataTable = (data) => {
+        let x = (Object.keys(data).map(key => {
+        return (<tr key={"data-table-"+key}><td>{key}</td><td>{data[key]}</td></tr>)
+        }))
+
+        return (<><tr><th>Registration type</th><th>tickets</th></tr>{x}</>)
+
+    }
     return (
-        <div className="pie-chart">
-            <Pie
-            data={dataSet}
-            width={150}
-            height={70}
-            options={{}}
-        />
+        <div className="chart">
+        <div className="button">
+            <div className={chart === 'Bar' ?"tile active":"tile"} onClick={() => setChart('Bar')}>Bar</div>
+            <div className={chart === 'Pie' ?"tile active":"tile"} onClick={() => setChart('Pie')}>Pie</div>
+        </div>
+        <div className="show">
+        <div className="graph">{showChart(chart)}</div>
+        <div className="data-table">{generateDataTable(data)}</div>
+        </div>
         </div>
     );
 };
 
-export default PieChart;
+export default Chart;

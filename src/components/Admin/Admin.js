@@ -4,8 +4,8 @@ import Fakerator from 'fakerator';
 import EventBar from './EventBar/EventBar';
 import EventStats from './EventStats/EventStats';
 const Admin = () => {
-    const [data,setData] = useState([]);
-    const [select,setSelected] = useState();
+    const [data,setData] = useState();
+    const [select,setSelected] = useState('all');
     const [stats,setStats] = useState([]);
     let fake = Fakerator();
     
@@ -18,6 +18,7 @@ const Admin = () => {
 
     useEffect(()=>{
         if(!select){return;}
+        setStats();
         if(select === 'all'){
             setStats(data);
             return;
@@ -28,6 +29,7 @@ const Admin = () => {
 
 
     },[select])
+    let fields = ['name','email','id'];
     let events = [
         "hackit","hack.com","meetuup","quit","tesing-again"
     ]
@@ -37,7 +39,7 @@ const Admin = () => {
 
     const payloadGenerator = () => {
        
-        return  Array(parseInt(Math.random()*100)).fill("data").map(data => {
+        return  Array(parseInt(Math.random()*10000)).fill("data").map(data => {
             return {
                 "event":events[parseInt(Math.random()*100)%5],
                 "name":fake.names.name(),
@@ -53,7 +55,7 @@ const Admin = () => {
     return (
         <div className="admin">
             <EventBar data={["all",...events]} select={(event) => setSelected(event)}/>
-            <EventStats data={stats}/>
+            <EventStats data={stats} fields={fields} select={select}/>
         </div>
     );
 };
