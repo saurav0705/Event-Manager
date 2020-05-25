@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import './Header.scss';
-import {FaBars} from 'react-icons/fa';
+import {FaBars,FaUserCircle} from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
+import Login from './Login/Login';
 const Header = () => {
+    const [open,setOpen] = useState(false);
+    const [login,setLogin] = useState(false);
+    const toggle = () => {
+        setOpen(!open);
+    }
+    useEffect(()=>{
+        if(localStorage.getItem('token')){
+            setLogin(true);
+
+        }
+    },[])
     let history = useHistory();
     const toggleNav = () => {
         let height = document.querySelector('.header-left').offsetHeight;
@@ -21,7 +33,13 @@ const Header = () => {
     let scrollDiv = document.getElementById(val).offsetTop;
          window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
         }
+    const logout = () => {
+        history.push('/');
+        localStorage.clear();
+        setLogin(false);
+    }
     return (
+        <>
         <div className="header">
             <div className="header-left">
                 <div className="header-item"><span className="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Event Handler</span></div>
@@ -29,10 +47,21 @@ const Header = () => {
                 <div className="header-item" onClick={() => goTo('about')}>About</div>
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
             </div>
-            <div className="header-right" onClick={() => history.push('/admin')}>
-                <div className="btn">login</div>
-            </div>
+            {login ? <div className="header-right" >
+                <div className="icon" onClick={() => history.push('/admin')}><FaUserCircle/></div>
+                <div className="btn-login" onClick={() => logout()}>logout</div>
+                </div>:
+            <div className="header-right" onClick={() => {toggle()}}>
+                <div className="btn-login">login</div>
+            </div>}
+            
         </div>
+        <Login
+        open={open}
+        toggle={() => toggle()}
+        success = {() => {setLogin(true);history.push('/admin')}}
+        />
+        </>
     );
 };
 

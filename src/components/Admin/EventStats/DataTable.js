@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import DetailView from './DetailView';
+import DetailView from './DetailView/DetailView';
 const DataTable = (props) => {
     const [selected,setSelected] = useState({});
     const [open,setOpen] = useState(false);

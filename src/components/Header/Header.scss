@@ -13,8 +13,11 @@
         transition-duration: 200ms;
     }
     .header-right{
-        // display: none;
-        .btn{
+        display: flex;
+        .icon{
+            font-size: 30px;
+        }
+        .btn-login{
             font-weight: 600;
             padding: 10px;
             text-transform: uppercase;
