@@ -6,6 +6,8 @@
     position: fixed;
     z-index: 0;
     max-width: inherit;
+    max-height: 80vh;
+    overflow-y: scroll;
     .event{
         text-align: center;
         border: 2px solid black;

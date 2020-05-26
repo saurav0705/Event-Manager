@@ -5,7 +5,7 @@
         .width{
             width: 10vw;
         }
-        .card{
+        .card-step{
             display: inline;
             margin-top: 10vh;
             vertical-align: middle;
@@ -16,11 +16,14 @@
             border-radius: 50%;
             padding: 15px;
             margin-bottom: 10vh;
-            background-color: lightblue;
+            background-color: #367efd;
+            color: white;
             max-width: fit-content;
+            opacity: 0.6;
         }
         .active{
             background-color: #367efd;
+            opacity: 1;
         }
     }
 }

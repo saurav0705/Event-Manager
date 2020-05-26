@@ -12,7 +12,6 @@ const Admin = () => {
     useEffect(()=>{
         setData(payloadGenerator());
         setStats(payloadGenerator());
-        // setTimeout(()=>setSelected("all"),2000);
         
     },[])
 
@@ -57,6 +56,7 @@ const Admin = () => {
             <EventBar data={["all",...events]} select={(event) => setSelected(event)}/>
             <EventStats data={stats} fields={fields} select={select}/>
         </div>
+        
     );
 };
 

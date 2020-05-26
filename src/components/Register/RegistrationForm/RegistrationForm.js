@@ -81,7 +81,7 @@ const RegistrationForm = (props) => {
                 <tr>
                     <td><div className="label">name</div></td>
                     <td><div className="input">
-                        <div className="box"><input type="text" value={data.name} name="name" onChange={(event) => handleChange(event)}/></div>
+                        <div className="box"><input type="text" value={data.name} name="name" placeholder="Enter Name..." onChange={(event) => handleChange(event)}/></div>
                                             <div className="error">{error.name}</div>
                         </div>
                     </td>    
@@ -89,7 +89,7 @@ const RegistrationForm = (props) => {
                 <tr>
                     <td><div className="label">email</div></td>
                     <td><div className="input">
-                        <div className="box"><input type="text" value={data.email} name="email" onChange={(event) => handleChange(event)}/></div>
+                        <div className="box"><input type="text" value={data.email} name="email" placeholder="Enter Email..." onChange={(event) => handleChange(event)}/></div>
                                             <div className="error">{error.email}</div>
                         </div>
                     </td>    
@@ -97,7 +97,7 @@ const RegistrationForm = (props) => {
                 <tr>
                     <td><div className="label">mobile</div></td>
                     <td><div className="input">
-                        <div className="box"><input type="text"  value={data.mobile} name="mobile" onChange={(event) => handleChange(event)}/></div>
+                        <div className="box"><input type="text"  value={data.mobile} name="mobile" placeholder="Enter Mobile.." onChange={(event) => handleChange(event)}/></div>
                         <div className="error">{error.mobile}</div>
                         </div>
                     </td>    
@@ -119,7 +119,7 @@ const RegistrationForm = (props) => {
                 <tr>
                     <td><div className="label">Number Of Tickets</div></td>
                     <td><div className="input">
-                        <div className="box"><input type="text"  value={data.tickets} name="tickets" onChange={(event) => handleChange(event)}/></div>
+                        <div className="box"><input type="text"  value={data.tickets} name="tickets" placeholder="Enter Tickets.." onChange={(event) => handleChange(event)}/></div>
                         <div className="error"></div>
                         </div>
                     </td>    

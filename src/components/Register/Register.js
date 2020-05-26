@@ -29,11 +29,11 @@ const Register = ({location}) => {
     return (
         <div className="register">
             <div className="steps">
-                <div className={active === 1 ? "card active":"card"}>1</div>
+                <div className={active === 1 ? "card-step active":"card-step"}>1</div>
                 <div className="width"></div>
-                <div className={active === 2 ? "card active":"card"}>2</div>
+                <div className={active === 2 ? "card-step active":"card-step"}>2</div>
                 <div className="width"></div>
-                <div className={active === 3 ? "card active":"card"}>3</div>
+                <div className={active === 3 ? "card-step active":"card-step"}>3</div>
             </div>
             {getView(active)}
 

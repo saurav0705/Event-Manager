@@ -26,7 +26,6 @@ const Login = (props) => {
             if(response.message){
                 setError(response.message)
             }else{
-                // console.log(response);
                 localStorage.setItem('token',response.access_token);
                 props.toggle();
                 props.success();
