@@ -12,6 +12,11 @@ const Header = () => {
     useEffect(()=>{
         if(localStorage.getItem('token')){
             setLogin(true);
+            var diff =(new Date().getTime() - new Date(localStorage.getItem('time')).getTime()) / 1000;
+            diff /= 60;
+            if(Math.abs(Math.round(diff)) > 48){
+                logout();
+            }
 
         }
     },[])
@@ -48,7 +53,7 @@ const Header = () => {
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
             </div>
             {login ? <div className="header-right" >
-                <div className="icon" onClick={() => history.push('/admin')}><FaUserCircle/></div>
+                <div className="icon" onClick={() => history.push('/user')}><FaUserCircle/></div>
                 <div className="btn-login" onClick={() => logout()}>logout</div>
                 </div>:
             <div className="header-right" onClick={() => {toggle()}}>
@@ -59,7 +64,7 @@ const Header = () => {
         <Login
         open={open}
         toggle={() => toggle()}
-        success = {() => {setLogin(true);history.push('/admin')}}
+        success = {() => {setLogin(true);history.push('/user')}}
         />
         </>
     );

@@ -27,6 +27,7 @@ const Login = (props) => {
                 setError(response.message)
             }else{
                 localStorage.setItem('token',response.access_token);
+                localStorage.setItem('time',new Date().toISOString());
                 props.toggle();
                 props.success();
                 setData({username:"",password:""})

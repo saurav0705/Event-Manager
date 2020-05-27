@@ -61,13 +61,13 @@ const Chart = (props) => {
             case 'Pie': {return <Pie
                         data={dataSet}
                         width={150}
-                        height={70}
+                        height={100}
                         options={{}}
                     />}
             case 'Bar' : {return <Bar
                 data={dataSet}
                 width={150}
-                height={70}
+                height={120}
                 options={{}}
             />
 

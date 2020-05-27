@@ -1,3 +1,134 @@
 .user-details{
-   
+   display:flex;
+   .side-drawer{
+       display: none;
+   }
+   .user-options{
+       transition-duration: 300ms;
+       flex:1;
+       text-align: center;
+       padding: 5vh 1vh;
+       height: 80vh;
+       overflow-y: scroll;
+       .close{
+           display: none;
+       }
+       .icon{
+           font-size: 3.5rem;
+           background-color: #2d2d2d;
+           max-width: fit-content;
+           margin: auto;
+           padding: 10px;
+           border-radius: 5px;
+           color: white;
+       }
+       .name{
+        font-size: 2rem;
+       }
+       .options{
+           padding: 2vh 5vh;
+           .option-item{
+               background-color: #2d5896;
+               color: white;
+               text-transform: uppercase;
+               margin: 1vh;
+               font-weight: 500;
+               padding: 1vh;
+               opacity: 0.8;
+               cursor: pointer;
+               &:hover{
+                   opacity: 1;
+               }
+               
+           }
+           .active{
+            opacity: 1;
+        }
+           .delete{
+               background-color: tomato;
+               color: white;
+               
+           }
+       }
+
+   }
+   .component{
+       flex: 3;
+       max-height: 90vh;
+       overflow-y: scroll;
+       width: 100%;
+       .messages{
+           .message-box{
+               background-color: whitesmoke;
+               border-radius: 5px;
+               -webkit-box-shadow: 3px 9px 30px -4px rgba(0,0,0,1);
+                -moz-box-shadow: 3px 9px 30px -4px rgba(0,0,0,1);
+                box-shadow: 3px 9px 30px -4px rgba(0,0,0,1);
+            //    border: 2px solid black;
+               padding: 10px;
+               margin: 1vh;
+               max-width:100%;
+               text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+               .name{
+                   text-transform: uppercase;
+                   font-size: 2rem;
+                   font-weight: 500;
+                   
+                   
+                
+               }
+               .email{
+                   color: #2d5896;
+                   text-decoration: underline;
+               }
+               .buttons{
+                   display: flex;
+                   margin-top: 20px;
+                   justify-content: center;
+                   .button{
+                    //    border: 2px solid black;
+                       margin: 1vh;
+                       padding: 5px;
+                       background-color: #2d5896;
+                       color: white;
+                       border-radius: 2px;
+                       text-transform: uppercase;
+                       opacity: 0.8;
+                       cursor: pointer;
+                       &:hover{
+                           opacity: 1;
+                       }
+                   }
+                   
+                   .delete{
+                       background-color: tomato;
+                   }
+               }
+           }
+       }
+   }
+}
+
+
+@media screen and (max-width:600px){
+    .user-details{
+        display: block;
+        .side-drawer{
+            display: block;
+        }
+        .user-options{
+            position: fixed;
+            left: 0;
+            z-index: 1;
+            margin-left:-100%;
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            .close{
+                display: block;
+            }
+        }
+    }
 }
