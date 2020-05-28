@@ -1,18 +1,33 @@
 .generate{
     .id{
-        -webkit-box-shadow: 0px 0px 21px 5px rgba(133,129,133,1);
-        -moz-box-shadow: 0px 0px 21px 5px rgba(133,129,133,1);
-        box-shadow: 0px 0px 21px 5px rgba(133,129,133,1);
+       margin: 3vh;
         width: fit-content;
-        max-width: 300px;
         margin: auto;
         text-align: center;
-        border: 2px solid black;
-        background-color: black;
-        color: white;
+        font-weight: 500;
         border-radius: 5px;
         padding-bottom: 2vh;
-        
+        .thank-you{
+            font-size: 42px;
+        }
+        .message{
+            padding-bottom: 5vh;
+            .event-name{
+                cursor: pointer;
+                color: tomato;
+                &:hover{
+                    color: red;
+                }
+            }
+            .registration-number{
+                cursor: pointer;
+                color: #177ef5;
+                text-decoration: underline;
+                &:hover{
+                    color: blue;
+                }
+            }
+        }
         .event{
             width: 100%;
             text-transform: uppercase;

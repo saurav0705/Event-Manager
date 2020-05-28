@@ -9,6 +9,7 @@ const Register = ({location}) => {
     const [data,setData] = useState({event:"e"});
     const [active,setActive] = useState(1);
     const [error,setError] = useState('');
+    const [loading,setLoading] = useState(false);
     useEffect(()=>{
         window.scrollTo(0,0);
         const { event} = queryString.parse(location.search);
@@ -20,7 +21,7 @@ const Register = ({location}) => {
     const getView = (val) => {
         switch(val){
             case 1: return <RegistrationForm data={data} submit={(obj)=> {setData({...obj});setError('');setActive(2);} }/>
-            case 2: return <FormReview error={error} data={data} back={() => back()} submit={() => {submitData();}}/>
+            case 2: return <FormReview loading={loading} error={error} data={data} back={() => back()} submit={() => {submitData();}}/>
             case 3: return <GenerateId data={data}/>
             default : return;
         }
@@ -29,6 +30,7 @@ const Register = ({location}) => {
         setActive(1);
     }
     const submitData = async () => {
+        setLoading(true);
         // console.log(obj);
         let data_form = JSON.parse(JSON.stringify(data));
         data_form['event_name'] = data['event'];
@@ -41,7 +43,7 @@ const Register = ({location}) => {
         delete data_form['mobile'];
         let form = new FormData();
         await Object.keys(data_form).map(key => form.append(key,data_form[key]));
-        registerUser(form,(resp) => {if(resp.message){setError(resp.message);}else{setData({...data,registration_number:resp.registration_number});setActive(3)}});
+        registerUser(form,(resp) => {setLoading(false);if(resp.message){setError(resp.message);}else{setData({...data,registration_number:resp.registration_number});setActive(3)}});
 
 
 

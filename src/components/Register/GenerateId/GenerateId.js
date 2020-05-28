@@ -3,26 +3,18 @@ import './GenerateId.scss';
 import QRCode from 'qrcode.react';
 import {useHistory} from 'react-router-dom';
 import {TimelineLite,Power2} from 'gsap';
+import {encrypt} from '../../../utilities/encrypt';
 const GenerateId = (props) => {
     let timeline = new TimelineLite();
     let history = useHistory();
       useEffect(()=>{
-        PreviewImage(props.data.id);
         animation();
     },[])
     const animation = () => {
         timeline.from(document.querySelector('.generate'),1,{opacity:0,ease:Power2.easeInOut})
-        // .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
+        
         
     }
-      function PreviewImage(image) {
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(image);
-
-        oFReader.onload = function (oFREvent) {
-            document.getElementById("image").src = oFREvent.target.result;
-        };
-    };
     const downloadQR = () => {
         const canvas = document.getElementById("qrcode");
         const pngUrl = canvas
@@ -38,10 +30,9 @@ const GenerateId = (props) => {
     return (
         <div className="generate">
             <div className="id" id="pdf">
-                <div className="event">{props.data.event}</div>
-                <div className="image"><img id="image" alt="profile" align="center"/></div>
-                <div className="name">{props.data.name}</div>
-                <QRCode value={JSON.stringify(props.data)} 
+                <div className="thank-you">Thank You</div>
+                <div className="message">You successfully registered for<span className="event-name"> {props.data.event} </span>and your registration id is <span className="registration-number">{props.data.registration_number}</span> . Please download your ID by clicking download button below.</div>
+                <QRCode value={encrypt(props.data)} 
                         id="qrcode"
                         size={200}
                         level={"H"}
