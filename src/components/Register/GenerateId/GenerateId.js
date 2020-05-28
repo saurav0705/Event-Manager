@@ -23,14 +23,33 @@ const GenerateId = (props) => {
             document.getElementById("image").src = oFREvent.target.result;
         };
     };
+    const downloadQR = () => {
+        const canvas = document.getElementById("qrcode");
+        const pngUrl = canvas
+          .toDataURL("image/png")
+          .replace("image/png", "image/octet-stream");
+        let downloadLink = document.createElement("a");
+        downloadLink.href = pngUrl;
+        downloadLink.download = props.data.name+"_registration_id.png";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      };
     return (
         <div className="generate">
             <div className="id" id="pdf">
                 <div className="event">{props.data.event}</div>
                 <div className="image"><img id="image" alt="profile" align="center"/></div>
                 <div className="name">{props.data.name}</div>
-                <QRCode value={JSON.stringify(props.data)} size={70}/>
+                <QRCode value={JSON.stringify(props.data)} 
+                        id="qrcode"
+                        size={200}
+                        level={"H"}
+                        includeMargin={true}/>
+                <button className="download" onClick={() => downloadQR()}>DOWNLOAD</button>
+                
             </div>
+            
             <button className="download" onClick={() => history.push('/')}>OK</button>
         </div>
     );

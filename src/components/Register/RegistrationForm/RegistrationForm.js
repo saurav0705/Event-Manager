@@ -5,7 +5,7 @@ import {TimelineLite,Power2} from 'gsap';
 import {validate,validateFileType,checkActive} from '../../../utilities/validation';
 
 const RegistrationForm = (props) => {
-    const [data,setData] = useState({name:"",email:"",mobile:"",type:"self",tickets:"",id:""});
+    const [data,setData] = useState({name:"",email:"",mobile:"",type:"self",tickets:1,id:""});
     const [error,setError] = useState({name:"",email:"",mobile:"",type:"",tickets:""});
     const [active,setActive] = useState(false);
     let timeline = new TimelineLite();
@@ -40,7 +40,7 @@ const RegistrationForm = (props) => {
                 setActive(()=>checkActive(data,error));
                 return;
             }
-            if(! isNaN(parseInt(event.target.value))){
+            if(! isNaN(event.target.value)){
                 if(event.target.value.length < 11){
                     let obj = data;
                     obj[event.target.name] = event.target.value;
@@ -68,6 +68,11 @@ const RegistrationForm = (props) => {
         if(event.target.name === "id"){
             let obj = data;
             obj[event.target.name] = event.target.files[0];
+            setData({...obj});
+        }
+        if(event.target.name === 'type' && event.target.value === 'self'){
+            let obj = data;
+            obj['tickets'] = 1;
             setData({...obj});
         }
         setActive(() => checkActive(data,error));
@@ -119,7 +124,7 @@ const RegistrationForm = (props) => {
                 <tr>
                     <td><div className="label">Number Of Tickets</div></td>
                     <td><div className="input">
-                        <div className="box"><input type="text"  value={data.tickets} name="tickets" placeholder="Enter Tickets.." onChange={(event) => handleChange(event)}/></div>
+                        <div className={data.type === 'self' ? "box disable":"box"}><input type="text"  value={data.tickets} name="tickets" placeholder="Enter Tickets.." onChange={(event) => handleChange(event)}/></div>
                         <div className="error"></div>
                         </div>
                     </td>    

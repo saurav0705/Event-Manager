@@ -44,3 +44,10 @@ export const getEventsUser = (cb) => {
        .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
         .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
 }
+
+export const registerUser = (data,cb) => {
+    fetch(BASE_ADMIN_URL+"registration",{method:'POST',body:data,mimetype:"multipart/form-data"})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+        .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
+    
+}

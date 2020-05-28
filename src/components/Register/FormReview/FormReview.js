@@ -37,6 +37,7 @@ const FormReview = (props) => {
             <div className="tickets"><FaTicketAlt/> {props.data.tickets}</div>
             </div>    
         </div>
+        <div className="error">{props.error}</div>
         <div className="buttons">
         <button onClick={() => props.back()}>back</button>
         <button onClick={() => props.submit()}>Submit</button>
