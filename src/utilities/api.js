@@ -23,19 +23,20 @@ export const getLogin = (data,cb) => {
 export const sendMessage = (data,cb) => {
     fetch(BASE_ADMIN_URL+"contact",{method:'POST',headers: { "Content-Type": "application/json"}, body:JSON.stringify(data)})
        .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
-        .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
+        .then(resp => {cb(resp);}).catch(err => cb({"message":"invalid Credential"}))
 }
 
 export const getMessages = (cb) => {
-    fetch(BASE_ADMIN_URL+"contact",{method:'GET',headers: { "Content-Type": "application/json"},'Authorization':'Bearer '+localStorage.getItem('token')})
-       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+    fetch(BASE_ADMIN_URL+"contact",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json();})
         .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
 }
 
+
 export const getUser = (cb) => {
-    fetch(BASE_ADMIN_URL+"admin/getuser",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
-       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
-        .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
+    fetch(BASE_ADMIN_URL+"admin/user/id",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
+       .then(resp => {if(resp.status === 401){throw resp};return resp.json()})
+        .then(resp => cb(resp)).catch(err => {console.log(err);cb({"message":"invalid Credential"})})
 }
 
 export const getEventsUser = (cb) => {

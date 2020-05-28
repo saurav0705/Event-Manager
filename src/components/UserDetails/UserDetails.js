@@ -9,7 +9,7 @@ const UserDetails = () => {
     const [user,setUser] = useState();
     const [select,setSelect] = useState('messages');
     useEffect(()=>{
-        getUser((resp)=> setUser({...resp}));
+        getUser((resp)=> {setUser({...resp});});
 
     },[])
     const open = () => {

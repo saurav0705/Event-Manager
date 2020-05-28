@@ -36,7 +36,7 @@ const Header = () => {
     }
     const scrollToComponent = (val) => {
     let scrollDiv = document.getElementById(val).offsetTop;
-         window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
+         window.scrollTo({ top: scrollDiv - 30, behavior: 'smooth'});
         }
     const logout = () => {
         history.push('/');
