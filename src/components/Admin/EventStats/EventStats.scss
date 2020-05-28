@@ -40,9 +40,12 @@
     .charts{
         padding: 3vh;
         padding-bottom: 7vh;
+        
         .chart{
             background-color: whitesmoke;
             padding: 3vh 5vh;
+            // max-height: 60vh;
+            // overflow: hidden;
             border-radius: 10px;
             .show{
                 

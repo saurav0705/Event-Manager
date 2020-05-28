@@ -26,7 +26,6 @@ const Chart = (props) => {
     });
 
     
-    // useEffect(()=>{console.log(data)},[data])
     useEffect(()=>{
         let obj = {self:0,
             corporate:0,
@@ -41,7 +40,7 @@ const Chart = (props) => {
         }else{
             setData(events[props.select]);
         }
-
+       
     },[props.data])
     function shuffle(array) {
         return  array.sort(() => Math.random() - 0.5);
@@ -60,15 +59,15 @@ const Chart = (props) => {
         switch(val){
             case 'Pie': {return <Pie
                         data={dataSet}
-                        width={150}
-                        height={100}
-                        options={{}}
+                        width={100}
+                        height={45}
+                        options={{responsive:true}}
                     />}
             case 'Bar' : {return <Bar
                 data={dataSet}
-                width={150}
-                height={120}
-                options={{}}
+                width={100}
+                height={50}
+                options={{responsive:true}}
             />
 
             }

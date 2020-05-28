@@ -6,6 +6,7 @@ import Login from './Login/Login';
 const Header = () => {
     const [open,setOpen] = useState(false);
     const [login,setLogin] = useState(false);
+    const [options,setOptions] = useState(false);
     const toggle = () => {
         setOpen(!open);
     }
@@ -43,6 +44,9 @@ const Header = () => {
         localStorage.clear();
         setLogin(false);
     }
+    const toggleOpacity = () => {
+        setOptions(!options);
+    }
     return (
         <>
         <div className="header">
@@ -52,9 +56,13 @@ const Header = () => {
                 <div className="header-item" onClick={() => goTo('about')}>About</div>
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
             </div>
-            {login ? <div className="header-right" >
-                <div className="icon" onClick={() => history.push('/user')}><FaUserCircle/></div>
-                <div className="btn-login" onClick={() => logout()}>logout</div>
+            {login ? <div className="header-right" onMouseLeave={() => toggleOpacity()}>
+                <div className="icon" onMouseEnter={() => toggleOpacity()} ><FaUserCircle/></div>
+                {options ? <div className="login-options">
+                <div className="item" onClick={() => history.push('/user')}>DashBoard</div>
+                <div className="item" onClick={() => history.push('/admin')}>Events Stats</div>
+                <div className="item" onClick={() => logout()}>logout</div>
+                </div>:null}
                 </div>:
             <div className="header-right" onClick={() => {toggle()}}>
                 <div className="btn-login">login</div>
