@@ -32,9 +32,15 @@ export const getMessages = (cb) => {
         .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
 }
 
+export const deleteMessage = (data,cb) => {
+    fetch(BASE_ADMIN_URL+"contact",{method:'DELETE',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}, body:JSON.stringify(data)})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+        .then(resp => {cb(resp);}).catch(err => cb({"message":"invalid Credential"}))
+}
+
 
 export const getUser = (cb) => {
-    fetch(BASE_ADMIN_URL+"admin/user/id",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
+    fetch(BASE_ADMIN_URL+"admin/id",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
        .then(resp => {if(resp.status === 401){throw resp};return resp.json()})
         .then(resp => cb(resp)).catch(err => {console.log(err);cb({"message":"invalid Credential"})})
 }

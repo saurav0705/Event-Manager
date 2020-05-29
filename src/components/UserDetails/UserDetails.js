@@ -5,9 +5,10 @@ import UserOptions from './components/UserOptions';
 import {AiFillRightSquare} from 'react-icons/ai';
 import Messages from './components/Messages';
 import Loading from '../Utilities/Loading/Loading';
+import Events from './components/Events';
 const UserDetails = () => {
     const [user,setUser] = useState();
-    const [select,setSelect] = useState('messages');
+    const [select,setSelect] = useState('events');
     useEffect(()=>{
         getUser((resp)=> {setUser({...resp});});
 
@@ -19,6 +20,7 @@ const UserDetails = () => {
     const viewComponent = (value) => {
         switch(value){
             case 'messages' : return <Messages/>
+            case 'events' : return <Events/>
             default : return null;
         }
 
