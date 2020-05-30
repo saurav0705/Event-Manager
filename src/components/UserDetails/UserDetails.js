@@ -6,6 +6,7 @@ import {AiFillRightSquare} from 'react-icons/ai';
 import Messages from './components/Messages';
 import Loading from '../Utilities/Loading/Loading';
 import Events from './components/Events';
+import Users from './components/Users';
 const UserDetails = () => {
     const [user,setUser] = useState();
     const [select,setSelect] = useState('events');
@@ -21,6 +22,7 @@ const UserDetails = () => {
         switch(value){
             case 'messages' : return <Messages/>
             case 'events' : return <Events/>
+            case 'users' : return <Users/>
             default : return null;
         }
 

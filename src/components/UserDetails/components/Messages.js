@@ -44,6 +44,9 @@ const Messages = () => {
 
     }
     return (<>
+        <div className="heading-box">
+            <div className="heading">Messages</div>
+        </div>
         <div className="messages">
             {data ? listMessages(data):<Loading/>}
         </div>

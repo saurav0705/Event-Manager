@@ -56,6 +56,26 @@ export const deleteEvent = (data,cb) => {
         .then(resp => {cb(resp);}).catch(err => cb({"message":"invalid Credential"}))
 }
 
+export const createEvent = (data,cb) => {
+    fetch(BASE_ADMIN_URL+"event",{method:'POST',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}, body:JSON.stringify(data)})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+        .then(resp => {cb(resp);}).catch(err => cb({"message":"invalid Credential"}))
+}
+
+export const createAdmin = (data,cb) => {
+    fetch(BASE_ADMIN_URL+"admin/register",{method:'POST',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}, body:JSON.stringify(data)})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+        .then(resp => {cb(resp);}).catch(err => cb({"message":"invalid Credential"}))
+}
+
+
+
+export const getAdmins = (cb) => {
+    fetch(BASE_ADMIN_URL+"admin/all",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+        .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
+}
+
 export const registerUser = (data,cb) => {
     fetch(BASE_ADMIN_URL+"registration",{method:'POST',body:data,mimetype:"multipart/form-data"})
        .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})

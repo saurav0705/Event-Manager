@@ -1,0 +1,30 @@
+.add-event{
+    width: fit-content;
+    margin: auto;
+    .heading{
+        text-transform: capitalize;
+        padding: 5px;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+    input{
+        border: 2px solid ;
+        padding: 5px;
+        border: 2px solid #2d5896;
+        &:hover{
+            border: 2px solid #2d5896;
+        }
+    }
+}
+.disable{
+    opacity: 1;
+    background-color: gray;
+    pointer-events: none;
+}
+.error{
+    text-align: center;
+    color: tomato;
+    text-transform: capitalize;
+    font-size: 15px;
+    margin-top: 2vh;
+}

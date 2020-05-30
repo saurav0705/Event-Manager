@@ -53,11 +53,30 @@
 
    }
    .component{
+       .heading-box{
+           text-align: center;
+           .heading{
+               text-transform: uppercase;
+               font-size: 2rem;
+               font-weight: bold;
+               margin: 2vh;
+               color: #2d5896;
+           }
+           .add{
+            cursor: pointer;
+            text-align: right;
+            padding: 2vh;
+            color: tomato;
+            text-transform: uppercase;
+            font-size: 24px;
+        }
+       }
        flex: 3;
-       max-height: 90vh;
-       overflow-y: scroll;
+       
        width: 100%;
        .messages{
+        max-height: 70vh;
+        overflow-y: scroll;
            .message-box{
                background-color: whitesmoke;
                border-radius: 5px;
