@@ -16,7 +16,6 @@ const EventStats = (props) => {
     return (
         <div className="event-stats">
             {props.data ? <>
-            <div className="heading">{props.select}</div>
             <div className="select-options">
                 <div className={select === 'graph' ? "option active":"option"} onClick={() => setSelect('graph')}>Graph</div>
                 <div className={select === 'table' ? "option active":"option"} onClick={() => setSelect('table')}>Registration table</div>
