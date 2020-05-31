@@ -10,6 +10,22 @@
         .thank-you{
             font-size: 42px;
         }
+        .id-card{
+            border: 2px solid black;
+            width: max-content;
+            border-radius: 10px;
+            margin: auto;
+            .event-name{
+                font-size: 42px;
+                padding: 1vh;
+                padding-bottom: 10vh;
+            }
+            .username{
+                padding-top: 10vh;
+                font-size: larger;
+                margin-bottom: 1vh;
+            }
+        }
         .message{
             padding-bottom: 5vh;
             .event-name{

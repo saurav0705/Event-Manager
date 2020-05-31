@@ -50,7 +50,7 @@ const Login = (props) => {
                     <input type="password" placeholder="Password" value={data.password} name="password" onChange={(event) => handleChange(event)}/>
                 </div>
                 {loading ? <Loading/>:
-                <div className={active ? "login-button" : "login-button disable"} onClick={() => {login(data)}}>
+                <div className={active ? "login-button" : "login-button login-disable"} onClick={() => {login(data)}}>
                     <button>Login <IoMdLogIn/></button>
                 </div>}
                 <div className="error">{error}</div>

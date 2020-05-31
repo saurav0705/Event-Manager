@@ -20,18 +20,29 @@
         .event-tile{
             // border: 2px solid black;
             line-height: 70px;
-            display: flex;
+            // display: flex;
             align-items: center;
             justify-content: space-around;
             text-align: center;
             border-radius: 10px;
             font-size: 24px;
             padding: 10px;
-            height: 50px;
+            // height: 50px;
             background-image: linear-gradient(to right,#7f7fd5,#86a8e7, #91eae4);
             transition-duration: 300ms;
             cursor: pointer;
             color: white;
+            .button{
+                text-transform: uppercase;
+                border: 2px solid white;
+                margin: 3px;
+                padding: 0px 7px;
+                transition-duration: 200ms;
+                &:hover{
+                    background-color: white;
+                    color: #2d5896;
+                }
+            }
             &:hover{
                 transform: scale(1.1,1.1);
             }

@@ -47,8 +47,9 @@ const Events = () => {
                 {!active ? <Loading/>:null}
                 {data.length === 0 && active ? <div className="event-tile">No Events Are Going On</div>:null}
                 {data.map((card,index) => {
-                    return (<div className="event-tile" ref={el => {tileRef.current.tile[index] = el}} key={"event "+index} onClick={() => history.push(`/register?event=${card.event_name}`)}>
-                            {card.event_name}
+                    return (<div className="event-tile" ref={el => {tileRef.current.tile[index] = el}} key={"event "+index} >
+                            <div className="title">{card.event_name}</div>
+                            <div className="button" onClick={() => history.push(`/register?event=${card.event_name}`)}>register</div>
                             </div>)
                 })}</>}
             </div>

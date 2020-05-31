@@ -31,7 +31,6 @@ const Register = ({location}) => {
     }
     const submitData = async () => {
         setLoading(true);
-        // console.log(obj);
         let data_form = JSON.parse(JSON.stringify(data));
         data_form['event_name'] = data['event'];
         data_form['image'] = data['id'];

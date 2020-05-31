@@ -16,6 +16,26 @@
         }
     }
 }
+
+.modal-user{
+    .event-list{
+        .event{
+            border: 2px solid #2d5896;
+            padding: 10px;
+            margin: 1vh;
+            border-radius: 10px;
+            background-color: #2d5896;
+            color: white;
+            text-align: center;
+            &:hover{
+                background-color: white;
+                color: #2d5896;
+                cursor: pointer;
+                
+            }
+        }
+    }
+}
 .disable{
     opacity: 1;
     background-color: gray;
