@@ -4,16 +4,19 @@ import Fakerator from 'fakerator';
 import EventBar from './EventBar/EventBar';
 import EventStats from './EventStats/EventStats';
 import {getEventsUser , getRegistration} from '../../utilities/api';
-const Admin = () => {
+import Loading from '../Utilities/Loading/Loading';
+import queryString from 'query-string';
+const Admin = (props) => {
     const [data,setData] = useState();
-    const [select,setSelected] = useState('all');
+    const [select,setSelected] = useState();
     const [stats,setStats] = useState([]);
     const [events,setEvents] = useState([]);
+    const [message,setMessage] = useState('');
     let fake = Fakerator();
     
     useEffect(()=>{
         getEventsUser((resp) => {if(!resp.message){let obj = resp;setEvents([...obj.map(o => o.event_name)]);}else{setEvents([])}});
-        getRegistration((resp) => console.log(resp));
+        getRegistration((resp) => {if(!resp.message){setData([...resp]);checkURL()}else{setMessage(resp.message)}});
         
     },[])
 
@@ -26,7 +29,7 @@ const Admin = () => {
             return;
         }
         let obj = data;
-        let payload = obj.filter(data => data.event === select);
+        let payload = obj.filter(data => data.event_name === select);
         setStats([...payload]);
 
 
@@ -35,7 +38,15 @@ const Admin = () => {
     let types = [
         "self","corporate","group","others"
     ]
+    const checkURL = () => {
+        const { event} = queryString.parse(props.location.search);
+        if(event !== undefined){
+            setSelected(event);
+        }else{
+            setSelected('all');
+        }
 
+    }
     const payloadGenerator = () => {
        
         return  Array(parseInt(Math.random()*10000)).fill("data").map(data => {
@@ -58,12 +69,21 @@ const Admin = () => {
     const print = () => {
         console.log(payloadGenerator());
     }
+    const checkError = () => {
+        if(message){
+            return message;
+        }else{
+            return <Loading/>
+        }
+    }
+    const getSelect = () => select;
     return (<>
+    {data ? 
         <div className="admin">
-            
-            <EventBar data={["all",...events]} select={(event) => setSelected(event)}/>
+            <EventBar data={["all",...events]} selected={() => getSelect()} select={(event) => setSelected(event)}/>
             <EventStats data={stats} fields={fields} select={select}/>
-        </div>
+        </div> :
+        checkError()}
         </>
         
     );

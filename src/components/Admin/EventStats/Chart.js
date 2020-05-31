@@ -33,7 +33,7 @@ const Chart = (props) => {
             others:0};
         if(!events[props.select]){
         props.data.forEach(element => {
-            obj[element.type] = obj[element.type] + element['tickets']
+            obj[element.type] = obj[element.type] + element['no_of_tickets']
         });
         setEvents({...events,...{[props.select]:obj}})
         setData(obj);

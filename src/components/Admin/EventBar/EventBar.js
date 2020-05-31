@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EventBar.scss';
 const EventBar = (props) => {
-    const [selected,setSelected] = useState('all');
+    const [selected,setSelected] = useState();
+    useEffect(()=>{
+        setSelected(props.selected());
+    },[props.selected])
     return (<>
         <div className="event-bar-proxy">
         </div>
