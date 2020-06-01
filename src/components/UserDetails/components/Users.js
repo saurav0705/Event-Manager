@@ -19,7 +19,7 @@ const Users = () => {
         getUsers();
     },[])
     const getUsers = () => {
-        getAdmins((resp) => {if(!resp.message){let obj = resp;console.log(resp);setData([...obj]);}else{setData([])}});
+        getAdmins((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
     }
 
     const deleteUser = (event,index) => {

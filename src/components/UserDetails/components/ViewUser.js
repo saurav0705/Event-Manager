@@ -10,7 +10,7 @@ const ViewUser = (props) => {
     const filterEvents = (username) => {
         let filtered = data.filter(dat => dat.username === username);
         if(filtered.length === 0 ){return "No Events Created"}
-        let list = data.map(dat => {return(<div className="event">{dat.event_name}</div>)})
+        let list = filtered.map(dat => {return(<div className="event">{dat.event_name}</div>)})
         return list;
     }
     return (
