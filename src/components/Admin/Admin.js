@@ -6,6 +6,7 @@ import EventStats from './EventStats/EventStats';
 import {getEventsUser , getRegistration} from '../../utilities/api';
 import Loading from '../Utilities/Loading/Loading';
 import queryString from 'query-string';
+import { useHistory } from 'react-router-dom';
 const Admin = (props) => {
     const [data,setData] = useState();
     const [select,setSelected] = useState();
@@ -13,8 +14,10 @@ const Admin = (props) => {
     const [events,setEvents] = useState([]);
     const [message,setMessage] = useState('');
     let fake = Fakerator();
+    let history = useHistory();
     
     useEffect(()=>{
+        if(! localStorage.getItem('token')){history.push('/');}
         getEventsUser((resp) => {if(!resp.message){let obj = resp;setEvents([...obj.map(o => o.event_name)]);}else{setEvents([])}});
         getRegistration((resp) => {if(!resp.message){setData([...resp]);checkURL()}else{setMessage(resp.message)}});
         

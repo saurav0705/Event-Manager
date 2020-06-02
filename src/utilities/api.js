@@ -42,7 +42,7 @@ export const deleteMessage = (data,cb) => {
 export const getUser = (cb) => {
     fetch(BASE_ADMIN_URL+"admin/id",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
        .then(resp => {if(resp.status === 401){throw resp};return resp.json()})
-        .then(resp => cb(resp)).catch(err => {console.log(err);cb({"message":"invalid Credential"})})
+        .then(resp => cb(resp)).catch(err => {cb({"message":"invalid Credential"})})
 }
 
 export const getEventsUser = (cb) => {

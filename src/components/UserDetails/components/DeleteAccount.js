@@ -3,14 +3,16 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './modal.scss';
 import Loading from '../../Utilities/Loading/Loading';
 import {deleteUser} from '../../../utilities/api';
+import { useHistory } from 'react-router-dom';
 const DeleteAccount = (props) => {
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState('');
+    let history = useHistory();
     
     const deleteAccount = () => {
         setError('');
         setLoading(true);
-        deleteUser({username:props.name},(resp) => {setLoading(false);if(resp.status === 'Success'){localStorage.setItem('deleted',true);window.location.reload();props.toggle();}else{setError(resp.message)}});
+        deleteUser({username:props.name},(resp) => {setLoading(false);if(resp.status === 'Success'){history.push('/');localStorage.setItem('deleted',true);window.location.reload();props.toggle();}else{setError(resp.message)}});
     }
     return (
         <Modal isOpen={props.open} toggle={props.toggle} >
