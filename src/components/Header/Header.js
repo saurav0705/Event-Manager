@@ -72,7 +72,7 @@ const Header = () => {
                 </div>:
             <div className="header-right" >
                 <div className="btn-login" onClick={() => {toggle()}}>login</div>
-                <div className="btn-login" onClick={() => setRegister(!register)}>Host Event</div>
+                <div className="btn-login" onClick={() => setRegister(!register)}>Sign Up</div>
             </div>}
             
         </div>
