@@ -83,6 +83,12 @@
 
 @media screen and (max-width:600px){
     .header{
+        .header-right{
+            .btn-login{
+                font-size: 18px;
+                padding-left: 2px;
+            }
+        }
         .header-left{
             display: block;
             height:50px;
