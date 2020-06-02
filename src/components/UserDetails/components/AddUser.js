@@ -25,7 +25,7 @@ const AddUser = (props) => {
                 <div className="heading">Enter Username</div>
                 <input placeholder="Enter Username..." value={data.username} name="username" onChange={(event) => handleChange(event)}/>
                 <div className="heading">Enter Password</div>
-                <input placeholder="Enter Username..." type="password" value={data.password} name="password" onChange={(event) => handleChange(event)}/>
+                <input placeholder="Enter Password..." type="password" value={data.password} name="password" onChange={(event) => handleChange(event)}/>
             </div>
             <div className="error">{error}</div>
         </ModalBody>

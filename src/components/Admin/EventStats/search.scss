@@ -1,0 +1,44 @@
+.search-view{
+    .results{
+        position: fixed;
+        background-color: white;
+        max-height: 20vh;
+        overflow-y: scroll;
+        margin: 0;
+        tr{
+            &:hover{
+                background-color: blue;
+            }
+            
+            td{
+            padding: 5px;
+            background-color: lightblue;
+            border: 1px solid white;
+            max-width: 30vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+        }
+        }
+    }
+    .search,.drop-down{
+        margin: auto;
+        width: fit-content;
+        label{
+            text-transform: uppercase;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 2px 0;
+            display: inline-block;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: white;
+            border: 2px solid lightblue;
+            &:focus{
+                border: 2px solid #2d5896;
+            }
+          }
+    }
+}

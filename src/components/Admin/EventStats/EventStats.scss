@@ -52,6 +52,7 @@
                 .graph{
                     display: block;
                 }
+            
             .data-table{
                 padding-top: 3vh;
                 max-width: fit-content;
@@ -98,6 +99,22 @@
     .table{
     max-width: 75vw;
     overflow-x: auto;
+    .search{
+        text-transform: uppercase;
+        margin: auto;
+        max-width: fit-content;
+        float: right;
+        background-color: #2d5896;
+        padding: 5px 10px;
+        margin: 1vh;
+        color: white;
+        opacity: 0.7;
+        cursor: pointer;
+        border-radius: 10px;
+        &:hover{
+            opacity: 1;
+        }
+    }
     .data-table {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;

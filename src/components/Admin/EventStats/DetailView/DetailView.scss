@@ -1,6 +1,17 @@
 .view{
     max-width: fit-content;
     margin: auto;
+    .message,.copied{
+        text-align: center;
+        text-transform: capitalize;
+        padding-bottom: 1vh;
+        color: #2d5896;
+    }
+    .copied{
+        color: tomato;
+        padding-top: 2vh;
+    }
+    
     tr{
    
     td{
@@ -16,5 +27,28 @@
         text-transform: uppercase;
         font-weight: 500;
     }
+    .value{
+        cursor: pointer;
+        &:hover{
+            background-color: #2d5896;
+            color: white;
+        }
+    }
+    
+    
 }
+}
+
+@media screen and (max-width:600px){
+    .view{
+        tr{
+            display: block;
+            margin: 1vh;
+            td{
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
 }
