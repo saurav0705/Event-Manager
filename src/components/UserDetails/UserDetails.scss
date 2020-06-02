@@ -59,13 +59,11 @@
                text-transform: uppercase;
                font-size: 2rem;
                font-weight: bold;
-               margin: 2vh;
                color: #2d5896;
            }
            .add{
             cursor: pointer;
             text-align: right;
-            padding: 2vh;
             color: tomato;
             text-transform: uppercase;
             font-size: 24px;
@@ -123,6 +121,9 @@
                    
                    .delete{
                        background-color: tomato;
+                   }
+                   .share{
+                       background-color: orange;
                    }
                }
            }

@@ -3,6 +3,7 @@ import {getEventsUser,deleteEvent} from '../../../utilities/api';
 import Loading from '../../Utilities/Loading/Loading';
 import { useHistory } from 'react-router-dom';
 import {IoIosAddCircle} from 'react-icons/io';
+import {FaShareAlt} from 'react-icons/fa';
 import AddEvent from './AddEvent';
 const Events = () => {
     const [data,setData] = useState();
@@ -35,7 +36,24 @@ const Events = () => {
     }
     const listEvents = (data) => {
         if(data.length === 0 ){return ("NO DATA")}
+    const share = (val) => {
+        let EVENT_URL = window.location.origin + "/register?event=" + encodeURIComponent(val);
+        if (navigator.share) {
+            navigator.share({
+              title: 'Event Registration URL',
+              url: EVENT_URL
+            }).then(() => {
+              console.log('Thanks for sharing!');
+            })
+            .catch(console.error);
+          } else {
+            var email = '';
+            var subject = 'Event Registration url';
+            var emailBody = 'Hi ,PFB '+EVENT_URL;
+            window.open("mailto:"+email+"?subject="+subject+"&body="+emailBody)
+          }
 
+    }
         return (data.map((event,index) => {
             return (<div className="message-box" key={"message"+index}>
                 <div className="name">{event.event_name}</div>
@@ -43,6 +61,7 @@ const Events = () => {
                 <div className="buttons">
                     <div className="button" onClick={() => history.push(`/admin?event=${event.event_name}`)}>View</div>
                     <div className="button delete" onClick={() => deleteEvents(event.event_name,index)}>Delete</div>
+                    <div className="button share" onClick={() => share(event.event_name)}><FaShareAlt/> share</div>
                 </div>:<Loading/>}
             </div>)
         }))
