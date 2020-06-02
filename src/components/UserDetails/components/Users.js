@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react';
-import {getAdmins,deleteEvent} from '../../../utilities/api';
+import {getAdmins,deleteUser} from '../../../utilities/api';
 import Loading from '../../Utilities/Loading/Loading';
 import { useHistory } from 'react-router-dom';
 import {IoIosAddCircle} from 'react-icons/io';
@@ -22,9 +22,11 @@ const Users = () => {
         getAdmins((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
     }
 
-    const deleteUser = (event,index) => {
-        // setDeleting(index);
-        // deleteEvent({event_name:event},(response)=>{setDeleting(-1);if(response.status === "Success"){deleteItem(index)}});
+    const deleteAdmin = (event,index) => {
+        setDeleting(index);
+        deleteUser({username:event},(response)=>{
+            setDeleting(-1);if(response.status === "Success"){deleteItem(index)}
+        });
 
     }
     const deleteItem = (index) => {
@@ -45,7 +47,7 @@ const Users = () => {
                 {deleting !== index ?
                 <div className="buttons">
                     <div className="button" onClick={() => {setSelect({...event});setView(!view)}}>View</div>
-                    <div className="button delete" onClick={() => deleteUser(event.event_name,index)}>Delete</div>
+                    <div className="button delete" onClick={() => deleteAdmin(event.username,index)}>Delete</div>
                 </div>:<Loading/>}
             </div>)
         }))

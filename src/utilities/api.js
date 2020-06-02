@@ -82,6 +82,12 @@ export const registerUser = (data,cb) => {
         .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
     
 }
+export const deleteUser = (data,cb) => {
+    fetch(BASE_ADMIN_URL+"admin/remove",{method:'DELETE',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}, body:JSON.stringify(data)})
+       .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
+        .then(resp => {cb(resp);}).catch(err => cb({"message":"invalid Credential"}))
+    
+}
 
 export const getRegistration = (cb) => {
     fetch(BASE_ADMIN_URL+"registration",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})

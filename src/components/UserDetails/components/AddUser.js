@@ -15,7 +15,7 @@ const AddUser = (props) => {
     const add = () => {
         setError('');
         setLoading(true);
-        createAdmin(data,(resp) => {setLoading(false);if(resp.status === 'Success'){setError('');setData({username:"",password:""});props.toggle();props.add(data.username);}else{setError(resp.message)}});
+        createAdmin(data,(resp) => {setLoading(false);if(resp.status === 'Success'){setError('Registered Sucessfully');setData({username:"",password:""});setError('');props.toggle();props.add(data.username);}else{setError(resp.message)}});
     }
     return (
         <Modal isOpen={props.open} toggle={props.toggle} >

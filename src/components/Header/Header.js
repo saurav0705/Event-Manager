@@ -3,14 +3,20 @@ import './Header.scss';
 import {FaBars,FaUserCircle} from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
 import Login from './Login/Login';
+import AddUser from '../UserDetails/components/AddUser';
 const Header = () => {
     const [open,setOpen] = useState(false);
     const [login,setLogin] = useState(false);
     const [options,setOptions] = useState(false);
+    const [register,setRegister] = useState(false);
     const toggle = () => {
         setOpen(!open);
     }
     useEffect(()=>{
+        if(localStorage.getItem('deleted')){
+            logout();
+            return;
+        }
         if(localStorage.getItem('token')){
             setLogin(true);
             var diff =(new Date().getTime() - new Date(localStorage.getItem('time')).getTime()) / 1000;
@@ -64,8 +70,9 @@ const Header = () => {
                 <div className="item" onClick={() => logout()}>logout</div>
                 </div>:null}
                 </div>:
-            <div className="header-right" onClick={() => {toggle()}}>
-                <div className="btn-login">login</div>
+            <div className="header-right" >
+                <div className="btn-login" onClick={() => {toggle()}}>login</div>
+                <div className="btn-login" onClick={() => setRegister(!register)}>sign up</div>
             </div>}
             
         </div>
@@ -74,6 +81,9 @@ const Header = () => {
         toggle={() => toggle()}
         success = {() => {setLogin(true);history.push('/user')}}
         />
+        <AddUser
+        open={register}
+        toggle={() => setRegister(!register)}/>
         </>
     );
 };
