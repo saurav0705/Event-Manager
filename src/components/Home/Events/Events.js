@@ -36,6 +36,10 @@ const Events = () => {
                 .staggerFrom(tileRef.current['tile'],0.3,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
         
     }
+    const showMore = () => {
+        document.querySelector('.event-list').style.height = "auto";
+        document.querySelector('.show-more').style.opacity = "0";
+    }
     let history = useHistory();
     return (
         <div className="events" id="events">
@@ -53,6 +57,7 @@ const Events = () => {
                             </div>)
                 })}</>}
             </div>
+            <div className="show-more" onClick={() => showMore()}>Show more</div>
         </div>
     );
 };

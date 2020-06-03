@@ -41,7 +41,7 @@ const About = () => {
                 </div>
                 <div className="card" ref={el => {tileRef.current.tile[2] = el}}>
                 <div className="icon"><FiMonitor/></div>
-                    <div className="title">Ready For The Event</div>
+                    <div className="title">Get Ready for Event</div>
                 </div>
             </div>
             

@@ -20,7 +20,7 @@ const Banner = () => {
     const bannerHeadLines = [
         'Managing Event Made Easier',
         'Get Yourself an event ID',
-        'Ready To Attend Event'
+        'Get Ready for event'
     ]
     return (
         <div className="banner" id="banner">

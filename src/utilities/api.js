@@ -48,7 +48,7 @@ export const getUser = (cb) => {
 export const getEventsUser = (cb) => {
     fetch(BASE_ADMIN_URL+"event",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
        .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
-        .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
+        .then(resp => cb(resp)).catch(err => cb({"message":"NO DATA"}))
 }
 export const deleteEvent = (data,cb) => {
     fetch(BASE_ADMIN_URL+"event",{method:'DELETE',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}, body:JSON.stringify(data)})
@@ -97,5 +97,5 @@ export const deleteUser = (data,cb) => {
 export const getRegistration = (cb) => {
     fetch(BASE_ADMIN_URL+"registration",{method:'GET',headers: { "Content-Type": "application/json",'Authorization':'Bearer '+localStorage.getItem('token')}})
        .then(resp => {if(resp.status === 401){throw resp.status};return resp.json()})
-        .then(resp => cb(resp)).catch(err => cb({"message":"invalid Credential"}))
+        .then(resp => cb(resp)).catch(err => cb({"message":"NO DATA"}))
 }

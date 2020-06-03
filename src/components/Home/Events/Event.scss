@@ -1,6 +1,23 @@
 .events{
     // min-height: 100vh;
     padding-bottom: 10vh;
+    .show-more{
+        text-transform: uppercase;
+                border: 2px solid white;
+                width: fit-content;
+                margin: auto;
+                margin-top: 5px;
+                padding: 0px 15px;
+                transition-duration: 200ms;
+                border-radius: 10px;
+                font-size: 36px;
+                color: white;
+                cursor: pointer;
+                background-image:linear-gradient(to right,#7f7fd5,#86a8e7, #91eae4);;
+                &:hover{
+                    transform: scale(1.1,1.1);
+                }
+    }
     .heading{
         margin-top: 7vh;
         text-transform: uppercase;
@@ -11,11 +28,14 @@
         color: #2d5896;
     }
     .event-list{
+        padding-top: 3vh;
         opacity: 0;
         margin-top: 10vh;
         display: grid;
         justify-content: center;
         grid-gap: 1em;
+        height: 30vh;
+        overflow: hidden;
         grid-template-columns: repeat(auto-fill,300px);
         .event-tile{
             // border: 2px solid black;
