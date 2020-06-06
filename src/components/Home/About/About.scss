@@ -3,10 +3,16 @@
     color: white;
     opacity: 0;
     .heading{
-        padding: 10vh;
+        padding-top: 10vh;
         font-size: 2rem;
         text-align: center;
         text-transform:uppercase;
+    }
+    .sub-heading{
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 15px;
+        padding-bottom: 10vh;
     }
     .container{
         display: flex;

@@ -48,6 +48,7 @@ const About = () => {
     return (
         <div className="about" id="about">
             <div className="heading">About</div>
+            <div className="sub-heading">eventus tracto means event handler in latin.</div>
             <div className="container">
                 {aboutCards.map((about,index) => (
                 <div className="card" key={"card-"+index} ref={el => {tileRef.current.tile[index] = el}}>
