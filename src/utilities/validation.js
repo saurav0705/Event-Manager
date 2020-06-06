@@ -1,6 +1,6 @@
 export const validate = (event) => {
     let obj = {};
-    // eslint-disable-next-line default-case
+    
     switch(event.target.name){
         case 'name':{
             if(/[0-9-/:-@[-`{-~]/gi.test(event.target.value)){
@@ -10,7 +10,7 @@ export const validate = (event) => {
             }   
             return obj; 
         }
-        // eslint-disable-next-line no-fallthrough
+        
         case 'email':{
             if(event.target.value.length === 0){ obj["email"]="";return obj;}    
             if(! /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/gi.test(event.target.value)){
@@ -19,8 +19,9 @@ export const validate = (event) => {
                     obj["email"]=""
                 } 
                 return obj; 
-
         }
+
+        default : return null;
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {AiFillCloseSquare} from 'react-icons/ai';
-import {colorPallete} from '../../../utilities/randomColor';
+import {colorPallete} from '../../utilities/randomColor';
 import {useHistory} from 'react-router-dom';
 import {FaUserEdit} from 'react-icons/fa';
 import {AiFillMessage,AiTwotoneDelete} from 'react-icons/ai';
@@ -8,13 +8,11 @@ import {MdEventNote,MdSettings} from 'react-icons/md';
 import DeleteAccount from './DeleteAccount';
 import ChangePassword from './ChangePassword';
 const UserOptions = (props) => {
-    let history = useHistory();
     const [open,setOpen] = useState(false);
     const [change,setChange] = useState(false);
-    const close = () => {
-        if(window.innerWidth <= 600){
-        document.querySelector('.user-options').style.marginLeft = "-100%";}
-    }
+    
+    const close = () =>  window.innerWidth <= 600 ? document.querySelector('.user-options').style.marginLeft = "-100%": null
+    
     
     return (
         <div className="user-options">

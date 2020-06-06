@@ -6,15 +6,15 @@ import {TimelineLite,Power2} from 'gsap';
 import Loading from '../../Utilities/Loading/Loading';
 const FormReview = (props) => {
     let timeline = new TimelineLite();
+    
     useEffect(()=>{
         PreviewImage(props.data.id);
         animation();
     },[])
-    const animation = () => {
-        timeline.from(document.querySelector('.form-view'),1,{opacity:0,ease:Power2.easeInOut})
-       
-        
-    }
+
+
+    const animation = () =>   timeline.from(document.querySelector('.form-view'),1,{opacity:0,ease:Power2.easeInOut})
+
     function PreviewImage(image) {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(image);

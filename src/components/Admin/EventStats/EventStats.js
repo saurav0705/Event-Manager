@@ -5,6 +5,8 @@ import Chart from './Chart';
 import Loading from '../../Utilities/Loading/Loading';
 const EventStats = (props) => {
     const [select,setSelect] = useState('graph');
+
+    //Function that toggle between data-table component and graph component
     const show = (value) => {
             switch(value){
                 case 'graph': {return (<div className="charts">{props.data.length > 0 ?<Chart data={props.data} select={props.select}/>:null}</div>)}

@@ -1,20 +1,17 @@
 import React, { useEffect,useState } from 'react';
-import {getMessages,deleteMessage} from '../../../utilities/api';
-import Loading from '../../Utilities/Loading/Loading';
+import {getMessages,deleteMessage} from '../../utilities/api';
+import Loading from '../Utilities/Loading/Loading';
 import ViewMessage from './ViewMessage';
 const Messages = () => {
     const [data,setData] = useState();
     const [select,setSelect] =useState({name:"",email:"",message:""});
     const [open,setOpen] = useState(false);
     const [deleting,setDeleting] = useState(-1);
-    useEffect(()=>{
-        getMsg();
+    
+    useEffect(()=>getMsg(),[])
 
-    },[])
-
-    const getMsg = () => {
-        getMessages((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
-    }
+    const getMsg = () =>   getMessages((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
+    
 
     const deleteMsg = (data,index) => {
         setDeleting(index);

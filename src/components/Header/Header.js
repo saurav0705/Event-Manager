@@ -3,15 +3,17 @@ import './Header.scss';
 import {FaBars,FaUserCircle} from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
 import Login from './Login/Login';
-import AddUser from '../UserDetails/components/AddUser';
+import AddUser from '../UserDetails/AddUser';
 const Header = () => {
-    const [open,setOpen] = useState(false);
+    const [open,setOpen] = useState({login:false,register:false});
     const [login,setLogin] = useState(false);
     const [options,setOptions] = useState(false);
-    const [register,setRegister] = useState(false);
-    const toggle = () => {
-        setOpen(!open);
-    }
+    let history = useHistory();
+
+    //toggles between which view to be shown
+    const toggle = (value) => setOpen({...open,[value]:!open[value]});
+
+    //check pre-requisite before loading
     useEffect(()=>{
         if(localStorage.getItem('deleted')){
             logout();
@@ -27,32 +29,34 @@ const Header = () => {
 
         }
     },[])
-    let history = useHistory();
+
+    //toggle navbar for small devices
     const toggleNav = () => {
-        let height = document.querySelector('.header-left').offsetHeight;
-        if(height === 50){
-        document.querySelector('.header-left').style.height = "auto";}
-        else{
-            document.querySelector('.header-left').style.height = "50px";
-        }
+        let navbar = document.querySelector('.header-left');
+        if(navbar.offsetHeight === 50){navbar.style.height = "auto";return;}
+        navbar.style.height = "50px";
     }
+
+    //Provides functionality to the link provided in navigation
     const goTo = async (val) => {
         await history.push('/');
         if(val !== 'banner'){toggleNav();}
         scrollToComponent(val);
     }
-    const scrollToComponent = (val) => {
-    let scrollDiv = document.getElementById(val).offsetTop;
-         window.scrollTo({ top: scrollDiv - 30, behavior: 'smooth'});
-        }
+
+    //scrolls to selected component
+    const scrollToComponent = (val) =>  window.scrollTo({ top: document.getElementById(val).offsetTop - 30, behavior: 'smooth'});
+     
+    
+    //logs out the user
     const logout = () => {
         history.push('/');
         localStorage.clear();
         setLogin(false);
     }
-    const toggleOpacity = () => {
-        setOptions(!options);
-    }
+
+    //toggles between options provided for logged in user
+    const toggleOpacity = () =>  setOptions(!options);
     return (
         <>
         <div className="header">
@@ -71,19 +75,19 @@ const Header = () => {
                 </div>:null}
                 </div>:
             <div className="header-right" >
-                <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle()}}>login</div>
-                <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";setRegister(!register);}}>Sign Up</div>
+                <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('login')}}>login</div>
+                <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('register');}}>Sign Up</div>
             </div>}
             
         </div>
         <Login
-        open={open}
-        toggle={() => toggle()}
+        open={open.login}
+        toggle={() => toggle('login')}
         success = {() => {setLogin(true);history.push('/user')}}
         />
         <AddUser
-        open={register}
-        toggle={() => setRegister(!register)}/>
+        open={open.register}
+        toggle={() => toggle('register')}/>
         </>
     );
 };

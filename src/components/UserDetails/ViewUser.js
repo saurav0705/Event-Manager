@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {getEventsUser} from '../../../utilities/api';
+import {getEventsUser} from '../../utilities/api';
 const ViewUser = (props) => {
     const [data,setData] = useState();
-    useEffect(()=>{
-        getEventsUser((resp) => setData([...resp]))
-    },[]);
+    
+    useEffect(()=>getEventsUser((resp) => setData([...resp])),[]);
 
     const filterEvents = (username) => {
         let filtered = data.filter(dat => dat.username === username);
@@ -13,6 +12,7 @@ const ViewUser = (props) => {
         let list = filtered.map(dat => {return(<div className="event">{dat.event_name}</div>)})
         return list;
     }
+
     return (
         <Modal isOpen={props.open} toggle={props.toggle} >
         <ModalHeader toggle={props.toggle}>{props.data ? "Events by " + props.data.username  : null}</ModalHeader>

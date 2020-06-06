@@ -12,12 +12,16 @@ const Login = (props) => {
     const [active,setActive] = useState(false);
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState('');
+
+    //Handles Input Change
     const handleChange = (event) => {
         let obj = data;
         obj[event.target.name] = event.target.value;
         setData({...obj});
         setActive(checkActive(data,{}));
     }
+
+    //Handles login functionality
     const login = (data) => {
         setError('');
         setLoading(true);
@@ -35,6 +39,8 @@ const Login = (props) => {
         })
 
     }
+
+    
     return (
         <div className="login-view">
              <Modal isOpen={props.open} toggle={props.toggle}>

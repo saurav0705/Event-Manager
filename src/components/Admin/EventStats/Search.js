@@ -6,7 +6,7 @@ const Search= (props) => {
     const [filtered,setFiltered] = useState([]);
     const [param,setParam] = useState('registration_number');
 
-
+    //Returns results on each keypress
     const changeHandler = (val) => {
         if(val.length === 0){setFiltered([]); return;}
         let obj = JSON.parse(JSON.stringify(props.data));
@@ -14,6 +14,8 @@ const Search= (props) => {
         setFiltered([...obj]);
 
     }
+
+    //Constructs option from filtered results
     const show = () => {
     return (filtered.map(data => (<tr onClick={() => {props.select(data);setFiltered([])}}>
         <td>{data.name}</td>
@@ -36,7 +38,9 @@ const Search= (props) => {
                         <option value="email">Email</option>
                         </select>
                 </div>
-                <div className="search"><input placeholder="Enter Search ..." onChange={(event) => changeHandler(event.target.value)}/></div>
+                <div className="search">
+                    <input placeholder="Enter Search ..." onChange={(event) => changeHandler(event.target.value)}/>
+                </div>
                 <div className="results">
                     {show()}
                 </div>

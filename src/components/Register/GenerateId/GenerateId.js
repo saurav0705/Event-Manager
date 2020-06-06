@@ -9,14 +9,11 @@ import download from 'downloadjs';
 const GenerateId = (props) => {
     let timeline = new TimelineLite();
     let history = useHistory();
-      useEffect(()=>{
-        animation();
-    },[])
-    const animation = () => {
-        timeline.from(document.querySelector('.generate'),1,{opacity:0,ease:Power2.easeInOut})
-        
-        
-    }
+    
+    useEffect(()=>animation(),[])
+    
+    const animation = () =>  timeline.from(document.querySelector('.generate'),1,{opacity:0,ease:Power2.easeInOut})
+    
 
 
     const downloadQR = () => {
@@ -25,7 +22,9 @@ const GenerateId = (props) => {
         .then(function (dataUrl) {
             download(dataUrl, props.data.name+"_registration.png");
         });
-      };
+      }
+
+      
     return (
         <div className="generate">
             <div className="id" id="pdf">

@@ -7,42 +7,53 @@ import {TimelineLite,Power2} from 'gsap';
 const About = () => {
     let timeline = new TimelineLite();
     let tileRef = useRef({tile:[]});
+    let aboutCards = [
+        {icon:'register',
+        title :'Register In An Event'},
+        {icon:'id',
+        title :'Get Yourself An ID'},
+        {icon:'monitor',
+        title :'Get Ready for Event'}
+    ]
+
+    //return icon for cards
+    const icons = (value) => {
+        switch(value){
+            case 'register' : return <IoIosCreate/>
+            case 'id' : return <FaIdCardAlt/>
+            case 'monitor' : return <FiMonitor/>
+            default : return null
+        }
+
+    }
+
+    //attached IntersectionObserver for correct time to trigger animation
     useEffect(()=>{
          let observer = new IntersectionObserver(async (obj)=>{
             if(obj[0].intersectionRatio > 0.001){
-
-                await animation();
+               await animation();
                 observer.unobserve(document.querySelector('.about'));
-            }
-               
-                
+            }        
         });
-        observer.observe(document.querySelector('.about'));
-        
+        observer.observe(document.querySelector('.about'));  
     },[])
 
+
+    //animation using GSAP
     const animation = () => {
         timeline.to(document.querySelector('.about'),0.2,{opacity:1,ease:Power2.easeInOut})
-        .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2)
-        
+        .staggerFrom(tileRef.current['tile'],0.8,{y:-100,x:-100,opacity:0,ease:Power2.easeInOut},0.2) 
     }
     
     return (
         <div className="about" id="about">
             <div className="heading">About</div>
             <div className="container">
-                <div className="card" ref={el => {tileRef.current.tile[0] = el}}>
-                    <div className="icon"><IoIosCreate/></div>
-                    <div className="title">Register In An Event</div>
-                </div>
-                <div className="card" ref={el => {tileRef.current.tile[1] = el}}>
-                <div className="icon"><FaIdCardAlt/></div>
-                    <div className="title">Get Yourself An ID</div>
-                </div>
-                <div className="card" ref={el => {tileRef.current.tile[2] = el}}>
-                <div className="icon"><FiMonitor/></div>
-                    <div className="title">Get Ready for Event</div>
-                </div>
+                {aboutCards.map((about,index) => (
+                <div className="card" key={"card-"+index} ref={el => {tileRef.current.tile[index] = el}}>
+                    <div className="icon">{icons(about.icon)}</div>
+                    <div className="title">{about.title}</div>
+                </div>))}
             </div>
             
         </div>

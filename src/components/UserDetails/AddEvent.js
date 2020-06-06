@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './modal.scss';
-import Loading from '../../Utilities/Loading/Loading';
-import {createEvent} from '../../../utilities/api';
+import Loading from '../Utilities/Loading/Loading';
+import {createEvent} from '../../utilities/api';
 const AddEvent = (props) => {
     const [event,setEvent] = useState('');
     const [loading,setLoading] = useState(false);
@@ -14,6 +14,7 @@ const AddEvent = (props) => {
         let obj ={event_name : event}
         createEvent(obj,(resp) => {setLoading(false);if(resp.status === 'Success'){setError('');setEvent('');props.toggle();props.add(event);}else{setError(resp.message)}});
     }
+    
     return (
         <Modal isOpen={props.open} toggle={props.toggle} >
         <ModalHeader toggle={props.toggle}>Add Event</ModalHeader>

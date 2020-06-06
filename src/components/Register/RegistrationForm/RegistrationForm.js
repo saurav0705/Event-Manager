@@ -9,28 +9,25 @@ const RegistrationForm = (props) => {
     const [error,setError] = useState({name:"",email:"",mobile:"",type:"",tickets:""});
     const [active,setActive] = useState(false);
     let timeline = new TimelineLite();
+    
     useEffect(()=>{
-        
         setData({...data,...props.data});
         checkActive();
     },[props.data])
-    useEffect(()=>{
-        animation();
-    },[])
-    const animation = () => {
-        timeline.from(document.querySelector('.register'),1,{opacity:0,ease:Power2.easeInOut})
-    }
-    const selectFile = () => {
-        document.querySelector('.file').click();
-    }
+    
+    useEffect(()=> animation(),[])
+    
+    const animation = () =>  timeline.from(document.querySelector('.register'),1,{opacity:0,ease:Power2.easeInOut})
+    
+    const selectFile = () => document.querySelector('.file').click();
+
+
     const handleChange = async (event) => {
         if(event.target.value === undefined){return;}
-        // setActive(checkActive(data,error));
         if(event.target.name === "id"){
             let obj = error;
             obj["id"] = validateFileType(event.target.value)["id"];
-            setError({...obj});
-            
+            setError({...obj});    
         }
         if(event.target.name === "mobile" || event.target.name === "tickets"){
             if(event.target.value.length === 0 ){

@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './modal.scss';
-import Loading from '../../Utilities/Loading/Loading';
-import {changePassword} from '../../../utilities/api';
+import Loading from '../Utilities/Loading/Loading';
+import {changePassword} from '../../utilities/api';
 const ChangePassword = (props) => {
     const [data,setData] = useState({old_password:"",new_password:""});
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState('');
+    
     const handleChange = (event) => {
         let obj = data;
         obj[event.target.name] = event.target.value;
         setData({...obj});
     }
+    
     const change = () => {
         setError('');
         setLoading(true);
         changePassword({...data,username:props.name},(resp) => {setLoading(false);if(resp.status === 'Success'){setError('Registered Sucessfully');setData({old_password:"",new_password:""});setError('');props.toggle();}else{setError(resp.message)}});
     }
+
     return (
         <Modal isOpen={props.open} toggle={props.toggle} >
         <ModalHeader toggle={props.toggle}>Change Password</ModalHeader>

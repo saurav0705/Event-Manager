@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react';
-import {getAdmins,deleteUser} from '../../../utilities/api';
-import Loading from '../../Utilities/Loading/Loading';
+import {getAdmins,deleteUser} from '../../utilities/api';
+import Loading from '../Utilities/Loading/Loading';
 import { useHistory } from 'react-router-dom';
 import {IoIosAddCircle} from 'react-icons/io';
 import AddUser from './AddUser';
@@ -11,24 +11,21 @@ const Users = () => {
     const [open,setOpen] = useState(false);
     const [view,setView] = useState(false);
     const [select,setSelect] = useState();
-    const toggle = () =>{
-        setOpen(!open);
-    }
-    let history = useHistory()
-    useEffect(()=>{
-        getUsers();
-    },[])
-    const getUsers = () => {
-        getAdmins((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
-    }
+    
+    const toggle = () =>setOpen(!open)
+    
+    useEffect(()=>getUsers(),[])
+
+    const getUsers = () =>   getAdmins((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
+    
 
     const deleteAdmin = (event,index) => {
         setDeleting(index);
         deleteUser({username:event},(response)=>{
             setDeleting(-1);if(response.status === "Success"){deleteItem(index)}
         });
-
     }
+
     const deleteItem = (index) => {
         let obj = data.filter((dat,ind) => ind !== index)
         setData([...obj]);
@@ -38,6 +35,7 @@ const Users = () => {
         let obj = data;
         setData([...obj,{username:user}]);
     }
+
     const listUser = (data) => {
         if(data.length === 0 ){return ("NO DATA")}
 
@@ -53,6 +51,7 @@ const Users = () => {
         }))
 
     }
+    
     return (<>
         <div className="heading-box">
             <div className="heading">Users</div>

@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from 'react';
 import './Admin.scss';
-import Fakerator from 'fakerator';
 import EventBar from './EventBar/EventBar';
 import EventStats from './EventStats/EventStats';
 import {getEventsUser , getRegistration} from '../../utilities/api';
@@ -13,9 +12,9 @@ const Admin = (props) => {
     const [stats,setStats] = useState([]);
     const [events,setEvents] = useState([]);
     const [message,setMessage] = useState('');
-    let fake = Fakerator();
     let history = useHistory();
     
+    //check pre-requisite before loading component
     useEffect(()=>{
         if(! localStorage.getItem('token')){history.push('/');}
         getEventsUser((resp) => {if(!resp.message){let obj = resp;setEvents([...obj.map(o => o.event_name)]);}else{setEvents([])}});
@@ -23,6 +22,7 @@ const Admin = (props) => {
         
     },[])
 
+    //Monitors Select change
     useEffect(()=>{
         if(!data){return;}
         if(!select){return;}
@@ -34,13 +34,12 @@ const Admin = (props) => {
         let obj = data;
         let payload = obj.filter(data => data.event_name === select);
         setStats([...payload]);
-
-
     },[select])
+
+    //which fields should be shown in registartion table
     let fields = ['registration_number','name','email'];
-    let types = [
-        "self","corporate","group","others"
-    ]
+    
+    //check the url for any specific event for which user is looking for
     const checkURL = () => {
         const { event} = queryString.parse(props.location.search);
         if(event !== undefined){
@@ -50,28 +49,8 @@ const Admin = (props) => {
         }
 
     }
-    const payloadGenerator = () => {
-       
-        return  Array(parseInt(Math.random()*10000)).fill("data").map(data => {
-            return {
-                "event_name":events[parseInt(Math.random()*100)%events.length],
-                "name":fake.names.name(),
-                "email":fake.internet.email(),
-                "mobile_number":parseInt(Math.random()*10000000000),
-                "type":types[parseInt(Math.random()*100)%4],
-                "no_of_tickets":parseInt(Math.random()*100),
-                "registration_number":parseInt(Math.random()*10000000000),
-                "registration_date": new Date().toISOString(),
-                "image": "https://picsum.photos/200"
 
-
-            }
-        })
-    }
-
-    const print = () => {
-        console.log(payloadGenerator());
-    }
+    //checks for error in any API call
     const checkError = () => {
         if(message){
             return message;
@@ -79,7 +58,11 @@ const Admin = (props) => {
             return <Loading/>
         }
     }
+
+    //function to change current selected event
     const getSelect = () => select;
+
+    
     return (<>
     {data ? 
         <div className="admin">
