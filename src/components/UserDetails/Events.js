@@ -46,14 +46,12 @@ const Events = () => {
             })
             .catch(console.error);
           } else {
-            var email = '';
-            var subject = 'Event Registration url';
-            var emailBody = 'Hi ,PFB '+EVENT_URL;
-            window.open("mailto:"+email+"?subject="+subject+"&body="+emailBody)
+            navigator.clipboard.writeText(EVENT_URL);
+            alert('copied to clipboard')
           }
 
     }
-    
+
         return (data.map((event,index) => {
             return (<div className="message-box" key={"message"+index}>
                 <div className="name">{event.event_name}</div>

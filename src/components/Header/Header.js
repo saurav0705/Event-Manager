@@ -61,10 +61,11 @@ const Header = () => {
         <>
         <div className="header">
             <div className="header-left">
-                <div className="header-item"><span className="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Event Handler</span></div>
+                <div className="header-item"><span className="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Eventus Tracto</span></div>
                 <div className="header-item" onClick={() => goTo('events')}>Events</div>
                 <div className="header-item" onClick={() => goTo('about')}>About</div>
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
+                <div className="header-item" onClick={() => goTo('developers')}>Developers</div>
             </div>
             {login ? <div className="header-right" onMouseLeave={() => toggleOpacity()}>
                 <div className="icon" onMouseEnter={() => toggleOpacity()} ><FaUserCircle/></div>
@@ -76,7 +77,7 @@ const Header = () => {
                 </div>:
             <div className="header-right" >
                 <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('login')}}>login</div>
-                <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('register');}}>Sign Up</div>
+                <div className="btn-login signup" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('register');}}>Sign Up</div>
             </div>}
             
         </div>

@@ -50,6 +50,7 @@
             
             background-color: white;
             color: #2d5896;
+            
             &:hover{
                 box-shadow: none;
                 padding: 10px 30px;
@@ -58,7 +59,9 @@
                 
                 
             }
+            
         }
+        
     }
     .header-item{
         font-weight: 400;
@@ -81,7 +84,7 @@
 
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:800px){
     .header{
         .header-right{
             .btn-login{

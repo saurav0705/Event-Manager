@@ -8,12 +8,12 @@ const About = () => {
     let timeline = new TimelineLite();
     let tileRef = useRef({tile:[]});
     let aboutCards = [
+        {icon:'monitor',
+        title :'Host An Event'},
         {icon:'register',
         title :'Register In An Event'},
         {icon:'id',
-        title :'Get Yourself An ID'},
-        {icon:'monitor',
-        title :'Get Ready for Event'}
+        title :'Get Yourself An ID'},   
     ]
 
     //return icon for cards
