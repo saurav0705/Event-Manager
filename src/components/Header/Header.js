@@ -61,7 +61,7 @@ const Header = () => {
         <>
         <div className="header">
             <div className="header-left">
-                <div className="header-item"><span className="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Eventus Tracto</span></div>
+                <div className="header-item title"><span className="sidebar" onClick={() => toggleNav()}><FaBars/></span> <span onClick={() => {goTo('banner')}}>Eventus Tracto</span></div>
                 <div className="header-item" onClick={() => goTo('events')}>Events</div>
                 <div className="header-item" onClick={() => goTo('about')}>About</div>
                 <div className="header-item" onClick={() => goTo('contact')}>Contact</div>
