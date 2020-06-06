@@ -79,6 +79,22 @@
                 padding: 2px 4px;
             }
         }
+        .login{
+            transition-duration: 300ms;
+            &:hover::after{
+                content: 'only for signed up users';
+                width: 100px;
+                color: black;
+                font-size: .7rem;
+                background-color: white;
+                border-radius: 5px;
+                top:50px;
+                right:100px;
+                position: absolute;
+                z-index: 1000;
+                padding: 2px 4px;
+            }
+        }
         
     }
     .header-item{

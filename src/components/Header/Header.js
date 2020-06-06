@@ -76,7 +76,7 @@ const Header = () => {
                 </div>:null}
                 </div>:
             <div className="header-right" >
-                <div className="btn-login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('login')}}>login</div>
+                <div className="btn-login login" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('login')}}>login</div>
                 <div className="btn-login signup" onClick={() => {document.querySelector('.header-left').style.height = "50px";toggle('register');}}>Sign Up</div>
             </div>}
             
