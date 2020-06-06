@@ -61,6 +61,22 @@
             }
             
         }
+        .signup{
+            transition-duration: 300ms;
+            &:hover::after{
+                content: 'click to host an event';
+                width: 100px;
+                color: black;
+                font-size: .7rem;
+                background-color: whitesmoke;
+                border-radius: 5px;
+                top:50px;
+                right:10px;
+                position: absolute;
+                z-index: 1000;
+                padding: 2px 4px;
+            }
+        }
         
     }
     .header-item{
