@@ -13,7 +13,7 @@ const Events = () => {
 
     const toggle = () => setOpen(!open)
 
-    useEffect(()=>getEvents(),[])
+    useEffect(()=>{getEvents()},[])
 
     const getEvents = () =>  getEventsUser((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
     

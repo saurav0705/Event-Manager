@@ -15,9 +15,9 @@ const RegistrationForm = (props) => {
         checkActive();
     },[props.data])
     
-    useEffect(()=> animation(),[])
+    useEffect(()=> {animation()},[])
     
-    const animation = () =>  timeline.from(document.querySelector('.register'),1,{opacity:0,ease:Power2.easeInOut})
+    const animation = () =>  {timeline.from(document.querySelector('.register'),1,{opacity:0,ease:Power2.easeInOut})}
     
     const selectFile = () => document.querySelector('.file').click();
 

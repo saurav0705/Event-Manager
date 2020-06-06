@@ -8,7 +8,7 @@ const Messages = () => {
     const [open,setOpen] = useState(false);
     const [deleting,setDeleting] = useState(-1);
     
-    useEffect(()=>getMsg(),[])
+    useEffect(()=>{getMsg()},[])
 
     const getMsg = () =>   getMessages((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
     

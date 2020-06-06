@@ -13,7 +13,7 @@ const FormReview = (props) => {
     },[])
 
 
-    const animation = () =>   timeline.from(document.querySelector('.form-view'),1,{opacity:0,ease:Power2.easeInOut})
+    const animation = () =>   {timeline.from(document.querySelector('.form-view'),1,{opacity:0,ease:Power2.easeInOut})}
 
     function PreviewImage(image) {
         var oFReader = new FileReader();

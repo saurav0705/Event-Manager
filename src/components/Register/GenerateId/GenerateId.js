@@ -10,9 +10,9 @@ const GenerateId = (props) => {
     let timeline = new TimelineLite();
     let history = useHistory();
     
-    useEffect(()=>animation(),[])
+    useEffect(()=>{animation()},[])
     
-    const animation = () =>  timeline.from(document.querySelector('.generate'),1,{opacity:0,ease:Power2.easeInOut})
+    const animation = () =>  {timeline.from(document.querySelector('.generate'),1,{opacity:0,ease:Power2.easeInOut})}
     
 
 
@@ -24,7 +24,7 @@ const GenerateId = (props) => {
         });
       }
 
-      
+
     return (
         <div className="generate">
             <div className="id" id="pdf">

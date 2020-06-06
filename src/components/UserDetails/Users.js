@@ -14,7 +14,7 @@ const Users = () => {
     
     const toggle = () =>setOpen(!open)
     
-    useEffect(()=>getUsers(),[])
+    useEffect(()=>{getUsers()},[])
 
     const getUsers = () =>   getAdmins((resp) => {if(!resp.message){let obj = resp;setData([...obj]);}else{setData([])}});
     
@@ -51,7 +51,7 @@ const Users = () => {
         }))
 
     }
-    
+
     return (<>
         <div className="heading-box">
             <div className="heading">Users</div>

@@ -4,7 +4,7 @@ import {getEventsUser} from '../../utilities/api';
 const ViewUser = (props) => {
     const [data,setData] = useState();
     
-    useEffect(()=>getEventsUser((resp) => setData([...resp])),[]);
+    useEffect(()=>{getEventsUser((resp) => setData([...resp]))},[]);
 
     const filterEvents = (username) => {
         let filtered = data.filter(dat => dat.username === username);

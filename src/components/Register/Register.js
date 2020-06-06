@@ -18,6 +18,7 @@ const Register = ({location}) => {
        setData({...obj})
 
     },[])
+    
     const getView = (val) => {
         switch(val){
             case 1: return <RegistrationForm data={data} submit={(obj)=> {setData({...obj});setError('');setActive(2);} }/>
