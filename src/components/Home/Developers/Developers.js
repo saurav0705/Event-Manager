@@ -32,7 +32,16 @@ const devs = [
             github : "https://github.com/singhbir",
             email : "singhbirvarinder@gmail.com"
         }
-    }
+    },
+    {
+        name:"rishabh tayal",
+        image:"https://media-exp1.licdn.com/dms/image/C5103AQFfGkTF253nHA/profile-displayphoto-shrink_400_400/0?e=1597276800&v=beta&t=3ZnnhBeiNJDtiQ0C6Pa6Z713Nw4AP1aU0logt6bPbMQ",
+        contact : {
+            linkedin:"https://www.linkedin.com/in/rishabh-tayal-473176167/",
+            github : "https://github.com/",
+            email : "tylrishabh@gmail.com"
+        }
+    },
 
 ]
 

@@ -9,13 +9,13 @@
         color: white;
     }
     .dev-container{
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
         padding: 4vh;
+        grid-gap: 3vh;
         opacity: 0;
         
         .dev-tile{
-            margin: 4vw;
             width: 100%;
             max-width: 300px;
             border-radius: 10px;
@@ -38,6 +38,7 @@
                 font-size: 30px;
                 text-transform: capitalize;
                 font-weight: 500;
+                white-space: nowrap;
             }
             .social{
                 display: flex;
@@ -60,7 +61,7 @@
 @media screen and (max-width:700px){
     .developers{
         .dev-container{
-            display: block;
+           
         }
     }
 }
